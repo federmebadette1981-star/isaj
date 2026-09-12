@@ -5,22 +5,27 @@ const faqs = [
   {
     question: "Quels niveaux sont proposés par l'ISAJ ?",
     answer:
-      "Les niveaux présentés sur le site donnent un aperçu du parcours scolaire. Les appellations, les classes ouvertes et les tranches d'âge doivent être confirmées directement avec l'établissement.",
+      "L'ISAJ accompagne les élèves du préscolaire au secondaire, à travers trois sections : la section préscolaire, la section fondamentale et la section secondaire.",
   },
   {
-    question: "Comment obtenir les informations d'admission ?",
+    question: "Comment inscrire mon enfant ?",
     answer:
-      "Utilisez le formulaire de contact ou d'inscription. Le site prépare un brouillon Gmail que vous devez vérifier et envoyer vous-même.",
+      "Complétez la demande de préinscription en ligne. Le secrétariat de l'ISAJ vous contacte ensuite pour vous communiquer les pièces requises, valider le dossier et confirmer l'inscription.",
   },
   {
-    question: "Quelles activités sont disponibles ?",
+    question: "Quels sont les frais de scolarité et les pièces à fournir ?",
     answer:
-      "Les activités et projets actuellement proposés sont en cours de vérification. Contactez l'ISAJ pour obtenir la liste à jour.",
+      "Les pièces requises, les frais de scolarité et les modalités applicables sont communiqués directement par le secrétariat, après réception de votre demande de préinscription.",
   },
   {
-    question: "Comment demander des informations officielles sur l'école ?",
+    question: "Dans quel cadre institutionnel l'ISAJ exerce-t-elle ?",
     answer:
-      "L'histoire de l'école, la direction fondatrice, la reconnaissance du MENFP et les examens nationaux seront publiés après validation des informations et des références officielles.",
+      "L'établissement exerce ses activités éducatives dans le système scolaire haïtien et relève des autorités compétentes du Ministère de l'Éducation Nationale et de la Formation Professionnelle (MENFP). Il est rattaché à la Direction Départementale de l'Éducation de l'Ouest et au district scolaire de Croix-des-Bouquets.",
+  },
+  {
+    question: "Comment devenir partenaire ou soutenir un projet ?",
+    answer:
+      "L'ISAJ développe des partenariats avec des fondations, ONG, établissements scolaires, entreprises, associations et donateurs. Écrivez-nous depuis la page Partenariat : les documents institutionnels et administratifs pertinents peuvent être mis à disposition dans le cadre d'une procédure de vérification.",
   },
 ];
 
@@ -42,13 +47,14 @@ const FAQ = () => {
               </span>
             </h2>
             <p className="pretty text-ink-mute mt-6 max-w-md text-[0.95rem] leading-relaxed">
-              Nous privilégions des réponses exactes. Pour toute information qui
-              n'est pas encore publiée, notre équipe peut vous renseigner
-              directement.
+              Les réponses ci-contre couvrent les demandes les plus fréquentes
+              des familles et des partenaires. Pour toute autre question,
+              l'équipe de l'ISAJ vous répond directement.
             </p>
             <div className="mt-10 rounded-[1.5rem] border border-black/[0.06] bg-white p-7">
               <p className="font-display text-ink text-[1.25rem] leading-snug italic">
-                «&nbsp;Demandez les informations à jour à l'ISAJ.&nbsp;»
+                «&nbsp;Former des élèves responsables, compétents et engagés
+                dans leur communauté.&nbsp;»
               </p>
               <a
                 href="/contact"

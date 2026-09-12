@@ -1,0 +1,39 @@
+---
+import { values } from "../../data/site-content";
+---
+
+<section class="bg-white py-24 lg:py-32">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mb-16 max-w-3xl">
+      <p class="text-ink-mute mb-4 text-[0.72rem] tracking-[0.22em] uppercase">
+        Nos valeurs
+      </p>
+      <h2
+        class="tracking-headline balance text-ink text-[1.75rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3.25rem]"
+      >
+        Ce que nous transmettons <span
+          class="font-display text-brand-deep font-normal italic"
+          >chaque jour.</span
+        >
+      </h2>
+    </div>
+
+    <ul class="divide-y divide-black/[0.06] border-y border-black/[0.06]">
+      {
+        values.map((value, index) => (
+          <li class="grid grid-cols-12 items-start gap-x-4 gap-y-2 py-7 md:items-center md:py-8">
+            <span class="tabular text-ink-mute col-span-2 text-[0.78rem] font-medium md:col-span-1">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <h3 class="font-display text-ink col-span-10 text-[1.2rem] leading-tight font-medium tracking-[-0.015em] sm:text-[1.45rem] md:col-span-5 md:text-[1.75rem]">
+              {value.title}
+            </h3>
+            <p class="text-ink-mute col-span-12 text-[0.92rem] leading-relaxed md:col-span-6">
+              {value.description}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

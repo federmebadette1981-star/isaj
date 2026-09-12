@@ -5,22 +5,25 @@ import { schoolIdentity } from "../../data/site-content";
 
 const facilities = [
   {
-    title: "Espace de l'ISAJ",
-    desc: "Photographie locale de l'établissement. La description précise du lieu sera confirmée par l'ISAJ.",
+    title: "Notre établissement",
+    desc: "Les locaux de l'ISAJ à Bon-Repos, Croix-des-Bouquets.",
     image: "/isaj-1.jpeg",
-    tag: "ISAJ",
+    tag: "Établissement",
+    alt: "Bâtiment de l'Institution Le Saint Justien à Bon-Repos",
   },
   {
-    title: "Vie de l'établissement",
-    desc: "Photographie locale de l'ISAJ. Le contexte de cette image reste à confirmer.",
+    title: "Vie en classe",
+    desc: "Le travail quotidien des élèves en salle de classe.",
     image: "/isaj-2.jpeg",
-    tag: "À confirmer",
+    tag: "Vie en classe",
+    alt: "Élèves de l'ISAJ en salle de classe",
   },
   {
     title: "Activités scolaires",
-    desc: "Les activités représentées et leur disponibilité seront identifiées avec l'équipe de l'école.",
+    desc: "Les moments de vie scolaire qui rythment l'année.",
     image: "/isaj-3.jpeg",
-    tag: "À confirmer",
+    tag: "Activités",
+    alt: "Activité scolaire à l'Institution Le Saint Justien",
   },
 ];
 ---
@@ -37,7 +40,7 @@ const facilities = [
           L'ISAJ en images
         </p>
         <h2
-          class="tracking-headline balance text-ink text-4xl leading-[1.05] font-semibold md:text-[3.25rem]"
+          class="tracking-headline balance text-ink text-[1.75rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3.25rem]"
         >
           Des images de <span
             class="font-display text-brand-deep font-normal italic"
@@ -45,11 +48,16 @@ const facilities = [
           >
         </h2>
       </div>
-      <div class="text-ink-mute flex items-center gap-2 text-[0.85rem]">
-        <MapPin size={15} strokeWidth={1.6} /><span
+      <a
+        href={schoolIdentity.mapsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-ink-mute hover:text-ink flex items-start gap-2 text-[0.85rem] transition-colors"
+      >
+        <MapPin size={15} strokeWidth={1.6} className="mt-0.5 shrink-0" /><span
           >{schoolIdentity.address}</span
         >
-      </div>
+      </a>
     </div>
 
     <div class="grid grid-cols-12 gap-6 md:gap-8">
@@ -61,9 +69,9 @@ const facilities = [
             "col-span-12 md:col-span-5",
           ];
           const heights = [
-            "h-[28rem] md:h-[36rem]",
-            "h-72 md:h-[17rem]",
-            "h-72 md:h-[17rem]",
+            "h-[24rem] sm:h-[28rem] md:h-[36rem]",
+            "h-64 sm:h-72 md:h-[17rem]",
+            "h-64 sm:h-72 md:h-[17rem]",
           ];
           return (
             <figure
@@ -71,17 +79,17 @@ const facilities = [
             >
               <Image
                 src={item.image}
-                alt="Photographie de l'ISAJ"
+                alt={item.alt}
                 width={1200}
                 height={900}
                 class={`${heights[index]} w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105`}
               />
               <div class="from-ink/85 via-ink/15 absolute inset-0 bg-gradient-to-t to-transparent" />
-              <figcaption class="absolute inset-x-0 bottom-0 p-7 md:p-9">
+              <figcaption class="absolute inset-x-0 bottom-0 p-6 md:p-9">
                 <span class="inline-block rounded-full bg-white/15 px-2.5 py-0.5 text-[0.7rem] font-medium tracking-[0.18em] text-white/80 uppercase backdrop-blur">
                   {item.tag}
                 </span>
-                <h3 class="font-display mt-3 text-[1.7rem] leading-tight font-medium text-white md:text-[2rem]">
+                <h3 class="font-display mt-3 text-[1.5rem] leading-tight font-medium text-white md:text-[2rem]">
                   {item.title}
                 </h3>
                 <p class="mt-2 max-w-md text-[0.9rem] leading-relaxed text-white/75">
@@ -92,6 +100,14 @@ const facilities = [
           );
         })
       }
+    </div>
+
+    <div class="mt-10">
+      <a
+        href="/gallery"
+        class="group text-ink decoration-ink/20 hover:decoration-ink inline-flex items-center gap-2 text-[0.9rem] font-medium underline decoration-1 underline-offset-[6px] transition-colors"
+        >Voir toute la galerie <span aria-hidden="true">↗</span></a
+      >
     </div>
   </div>
 </section>

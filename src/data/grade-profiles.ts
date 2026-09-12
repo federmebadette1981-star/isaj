@@ -1,199 +1,155 @@
+/**
+ * Profils des trois sections de l'ISAJ.
+ * Chaque section présente un contenu qui lui est propre :
+ * classes concernées, objectifs pédagogiques, principales matières,
+ * approche pédagogique, admissions et contact.
+ * Les tranches d'âge ne sont pas affichées tant qu'elles ne sont pas
+ * officiellement confirmées par l'établissement.
+ */
 export const gradeProfiles = [
   {
-    id: "1",
-    title: "Académie des Petits Isajiens",
+    id: "prescolaire",
+    title: "Section Préscolaire",
+    shortTitle: "Préscolaire",
     subtitle: "Les premières années de la scolarité",
-    grades: "Préscolaire · 2 à 6 ans",
-    ageRange: "2 à 6 ans",
-    overview:
-      "Un accompagnement adapté aux premières années de la scolarité, dans un environnement bienveillant et attentif au développement de chaque enfant.",
+    grades: "Préscolaire",
     color: "blue",
-    curriculum: [
+    overview:
+      "Le préscolaire accompagne les jeunes enfants dans leurs premiers apprentissages et favorise leur développement intellectuel, social, émotionnel et moteur.",
+    classes: [
+      "Petite section",
+      "Moyenne section",
+      "Grande section",
+    ],
+    objectives: [
+      "Éveiller le langage, l'écoute et l'expression orale",
+      "Découvrir les premiers repères en lecture, en écriture et en nombres",
+      "Développer la motricité fine et la motricité globale",
+      "Apprendre à vivre en groupe, à partager et à respecter les règles",
+      "Construire progressivement l'autonomie et la confiance en soi",
+    ],
+    subjects: [
       "Langage et communication",
-      "Premiers apprentissages",
+      "Premiers apprentissages (pré-lecture, pré-écriture, pré-mathématiques)",
+      "Découverte du monde",
       "Expression artistique",
-      "Motricité",
-      "Vie en groupe",
+      "Activités motrices et jeux éducatifs",
+      "Vie en groupe et hygiène",
     ],
-    details: [
+    approach: [
       {
-        label: "Apprentissages",
-        items: [
-          "Développer le langage et l'expression",
-          "Découvrir les premiers concepts",
-          "Apprendre par l'observation et l'expérience",
-        ],
+        label: "Apprendre par le jeu",
+        text: "Les apprentissages passent par la manipulation, l'observation et le jeu structuré, adaptés au rythme de chaque enfant.",
       },
       {
-        label: "Vie collective",
-        items: [
-          "Respecter les autres",
-          "Participer aux activités du groupe",
-          "Construire progressivement son autonomie",
-        ],
+        label: "Un cadre rassurant",
+        text: "Des repères quotidiens stables et un accompagnement attentif permettent à l'enfant de se sentir en sécurité pour apprendre.",
       },
       {
-        label: "Expression",
-        items: [
-          "Créer et expérimenter",
-          "Bouger et découvrir son environnement",
-          "Partager ses idées et ses émotions",
-        ],
+        label: "Un lien étroit avec la famille",
+        text: "La responsable du préscolaire et l'enseignante restent en dialogue régulier avec les parents sur les progrès de l'enfant.",
       },
     ],
-    activities: [
-      "Activités de classe",
-      "Expression artistique",
-      "Jeux et découvertes",
-    ],
+    admissions:
+      "La demande de préinscription au préscolaire se fait en ligne. Le secrétariat recontacte ensuite la famille pour communiquer les pièces requises, les modalités et les prochaines étapes.",
     gallery: ["/isaj-1.jpeg", "/isaj-3.jpeg"],
   },
   {
-    id: "2",
-    title: "Académie des Petits Isajiens",
-    subtitle: "Construire les apprentissages fondamentaux",
-    grades: "1ᵉʳ et 2ᵉ cycles fondamentaux",
-    ageRange: "Âges à confirmer",
-    overview:
-      "Un cadre pour consolider la lecture, l'écriture, les mathématiques et les autres apprentissages fondamentaux.",
+    id: "fondamental",
+    title: "Section Fondamentale",
+    shortTitle: "Fondamental",
+    subtitle: "Construire les apprentissages essentiels",
+    grades: "Enseignement fondamental",
     color: "indigo",
-    curriculum: [
+    overview:
+      "L'enseignement fondamental permet aux élèves de développer progressivement les connaissances et compétences essentielles en lecture, écriture, mathématiques, sciences, langues, sciences sociales et éducation citoyenne.",
+    classes: [
+      "1er cycle fondamental",
+      "2e cycle fondamental",
+      "3e cycle fondamental, jusqu'à la 9e année",
+    ],
+    objectives: [
+      "Maîtriser la lecture, l'écriture et l'expression écrite",
+      "Consolider le raisonnement et les compétences mathématiques",
+      "Développer la démarche d'observation et d'expérimentation en sciences",
+      "Acquérir des méthodes de travail et le sens de l'effort",
+      "Comprendre son environnement social, historique et géographique",
+      "Préparer les élèves de 9e année aux examens officiels",
+    ],
+    subjects: [
       "Français",
+      "Créole",
       "Mathématiques",
-      "Sciences",
-      "Histoire et géographie",
-      "Expression artistique",
+      "Sciences expérimentales",
+      "Sciences sociales, histoire et géographie",
+      "Langues vivantes",
+      "Éducation citoyenne et morale",
+      "Expression artistique et éducation physique",
     ],
-    details: [
+    approach: [
       {
-        label: "Fondamentaux",
-        items: [
-          "Développer la lecture et l'écriture",
-          "Renforcer le raisonnement mathématique",
-          "Acquérir des méthodes de travail",
-        ],
+        label: "Des bases solides",
+        text: "Le travail quotidien met l'accent sur la maîtrise progressive des savoirs fondamentaux avant d'aborder des contenus plus complexes.",
       },
       {
-        label: "Découverte",
-        items: [
-          "Observer et questionner le monde",
-          "Relier les apprentissages à son environnement",
-          "Développer la curiosité",
-        ],
+        label: "Discipline et régularité",
+        text: "Le suivi des devoirs, l'assiduité et le comportement font l'objet d'une attention constante des enseignants et du censeur.",
       },
       {
-        label: "Expression",
-        items: [
-          "S'exprimer à l'oral et à l'écrit",
-          "Développer sa créativité",
-          "Participer à la vie de la classe",
-        ],
+        label: "Un suivi individuel",
+        text: "Le responsable académique et les enseignants identifient les difficultés en cours d'année afin d'accompagner chaque élève.",
       },
     ],
-    activities: [
-      "Activités de classe",
-      "Projets pédagogiques à confirmer",
-      "Activités artistiques à confirmer",
-    ],
+    admissions:
+      "La demande de préinscription en section fondamentale se fait en ligne. Le secrétariat précise ensuite le niveau d'entrée, les pièces à fournir et les modalités applicables.",
     gallery: ["/isaj-2.jpeg", "/isaj-4.jpeg"],
   },
   {
-    id: "3",
-    title: "École Mixte Le Saint Justien",
-    subtitle: "Consolider son parcours fondamental",
-    grades: "3ᵉ cycle fondamental",
-    ageRange: "Âges à confirmer",
-    overview:
-      "Un parcours de consolidation qui accompagne les élèves dans le développement de leurs connaissances, de leur autonomie et de leur esprit critique.",
-    color: "cyan",
-    curriculum: [
-      "Français",
-      "Mathématiques",
-      "Sciences",
-      "Histoire et géographie",
-      "Éducation à la citoyenneté",
-    ],
-    details: [
-      {
-        label: "Connaissances",
-        items: [
-          "Approfondir les matières fondamentales",
-          "Développer l'analyse et le raisonnement",
-          "Organiser son travail",
-        ],
-      },
-      {
-        label: "Autonomie",
-        items: [
-          "Prendre progressivement des responsabilités",
-          "Présenter son travail",
-          "Collaborer avec les autres",
-        ],
-      },
-      {
-        label: "Ouverture",
-        items: [
-          "Comprendre son environnement",
-          "Développer l'esprit critique",
-          "Préparer la suite de son parcours scolaire",
-        ],
-      },
-    ],
-    activities: [
-      "Activités de classe",
-      "Projets pédagogiques à confirmer",
-      "Activités sportives à confirmer",
-    ],
-    gallery: ["/isaj-3.jpeg", "/isaj-4.jpeg"],
-  },
-  {
-    id: "4",
-    title: "Institution Le Saint Justien",
-    subtitle: "Poursuivre son parcours secondaire",
-    grades: "Secondaire",
-    ageRange: "Âges à confirmer",
-    overview:
-      "La suite du parcours scolaire au sein de l'ISAJ, avec un accompagnement adapté aux exigences du secondaire.",
+    id: "secondaire",
+    title: "Section Secondaire",
+    shortTitle: "Secondaire",
+    subtitle: "Préparer les examens officiels et la suite du parcours",
+    grades: "Enseignement secondaire",
     color: "emerald",
-    curriculum: [
-      "Français",
-      "Mathématiques",
-      "Sciences",
-      "Histoire et géographie",
-      "Éducation à la citoyenneté",
+    overview:
+      "Le secondaire accompagne les élèves vers une formation académique plus approfondie et les prépare notamment aux examens officiels, aux études supérieures, à la formation professionnelle et à leur future intégration dans la société.",
+    classes: [
+      "Niveaux du secondaire, jusqu'à la classe terminale",
+      "Préparation aux examens officiels du secondaire",
     ],
-    details: [
+    objectives: [
+      "Approfondir les connaissances disciplinaires et l'analyse",
+      "Préparer méthodiquement les examens officiels",
+      "Développer l'autonomie de travail et l'esprit critique",
+      "Construire un projet d'études supérieures ou de formation professionnelle",
+      "Assumer des responsabilités au sein de l'établissement et de la communauté",
+    ],
+    subjects: [
+      "Français et littérature",
+      "Mathématiques",
+      "Sciences physiques, chimie et sciences de la vie",
+      "Histoire, géographie et éducation à la citoyenneté",
+      "Langues vivantes",
+      "Philosophie et sciences économiques et sociales",
+      "Informatique et éducation physique",
+    ],
+    approach: [
       {
-        label: "Parcours scolaire",
-        items: [
-          "Approfondir les connaissances disciplinaires",
-          "Développer les méthodes de travail",
-          "Préparer les étapes suivantes de la scolarité",
-        ],
+        label: "Exigence académique",
+        text: "Les évaluations régulières et les séances de préparation visent directement les attendus des examens officiels.",
       },
       {
-        label: "Responsabilité",
-        items: [
-          "Renforcer l'autonomie",
-          "S'engager dans les projets de l'établissement",
-          "Développer le sens de l'effort",
-        ],
+        label: "Autonomie et responsabilité",
+        text: "Les élèves sont encouragés à organiser leur travail, à s'engager dans la vie de l'établissement et à prendre des initiatives.",
       },
       {
         label: "Orientation",
-        items: [
-          "Réfléchir à son projet personnel",
-          "Valoriser ses compétences",
-          "S'informer sur les possibilités après le secondaire",
-        ],
+        text: "L'équipe accompagne les élèves dans la réflexion sur leurs études supérieures et leur future insertion professionnelle.",
       },
     ],
-    activities: [
-      "Activités de classe",
-      "Projets scolaires à confirmer",
-      "Activités et clubs à confirmer",
-    ],
-    gallery: ["/isaj-1.jpeg", "/isaj-2.jpeg"],
+    admissions:
+      "La demande de préinscription au secondaire se fait en ligne. Le secrétariat communique ensuite le dossier à constituer et les modalités d'admission applicables.",
+    gallery: ["/isaj-3.jpeg", "/isaj-2.jpeg"],
   },
 ] as const;
 

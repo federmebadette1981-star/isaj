@@ -15,6 +15,23 @@ const forbidden = [
   { label: "old phone", pattern: /(?:498[- ]9660|00 00 0000)/g },
   { label: "placeholder link", pattern: /href\s*=\s*["']#\s*["']/g },
   {
+    label: "placeholder text (à confirmer / à venir / etc.)",
+    pattern:
+      /(?:à\s+confirmer|à\s+venir|bient[oô]t\s+disponible|seront?\s+(?:publi|ajout|complét)|informations?\s+à\s+compl[ée]ter|source\s+officielle)/gi,
+  },
+  {
+    label: "Gmail draft workflow",
+    pattern: /brouillon\s+gmail|mail\.google\.com/gi,
+  },
+  {
+    label: "Académie des Petits Isajiens naming",
+    pattern: /acad[ée]mie\s+des\s+petits\s+isajiens/gi,
+  },
+  {
+    label: "wrong French: « fondamentale » after « préscolaire »",
+    pattern: /pr[ée]scolaire,\s*fondamentale\b/gi,
+  },
+  {
     label: "remote image host",
     pattern:
       /https?:\/\/(?:images\.unsplash\.com|ui-avatars\.com|img\.icons8\.com)/gi,

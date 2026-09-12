@@ -1,0 +1,255 @@
+---
+import { ArrowLeft, ArrowUpRight, FileCheck2, ShieldCheck } from "lucide-react";
+import Layout from "../layouts/Layout.astro";
+import {
+  contactDetails,
+  partnership,
+  priorityNeeds,
+  projects,
+  schoolIdentity,
+  transparency,
+} from "../data/site-content";
+---
+
+<Layout
+  title={`Partenariat — ${schoolIdentity.name} (ISAJ)`}
+  description="Devenir partenaire de l'Institution Le Saint Justien : domaines de collaboration, projets soutenus et documents institutionnels disponibles sur demande."
+>
+  <section
+    class="mx-auto max-w-7xl px-4 pt-12 pb-20 sm:px-6 lg:px-8 lg:pt-16 lg:pb-24"
+  >
+    <a
+      href="/"
+      class="group text-ink-mute hover:text-ink inline-flex items-center gap-2 text-[0.85rem] transition-colors"
+    >
+      <ArrowLeft
+        size={15}
+        className="transition-transform group-hover:-translate-x-0.5"
+      />
+      Retour à l'accueil
+    </a>
+
+    <div
+      class="mt-10 grid grid-cols-1 items-end gap-10 lg:grid-cols-12 lg:gap-16"
+    >
+      <div class="lg:col-span-8">
+        <p
+          class="text-ink-mute mb-4 text-[0.72rem] tracking-[0.22em] uppercase"
+        >
+          Partenariat
+        </p>
+        <h1
+          class="tracking-headline balance text-ink text-[2rem] leading-[1.02] font-semibold sm:text-5xl md:text-[5rem]"
+        >
+          Devenir partenaire de <span
+            class="font-display text-brand-deep font-normal italic">l'ISAJ.</span
+          >
+        </h1>
+      </div>
+      <div class="space-y-5 lg:col-span-4">
+        {
+          partnership.paragraphs.map((paragraph) => (
+            <p class="pretty text-ink-mute max-w-md text-[0.98rem] leading-relaxed">
+              {paragraph}
+            </p>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="mt-12 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+      <a
+        href="/contact?purpose=partner"
+        class="group bg-ink hover:bg-ink-soft inline-flex min-h-13 items-center justify-center gap-2 rounded-full px-7 text-[0.95rem] font-medium text-white transition-all active:scale-[0.98]"
+        >Discuter d'un partenariat <ArrowUpRight
+          size={16}
+          className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        /></a
+      >
+      <a
+        href="/projects"
+        class="text-ink inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-black/[0.1] bg-white px-6 text-[0.95rem] font-medium transition-colors hover:bg-black/[0.03]"
+        >Voir nos projets</a
+      >
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-5">
+          <p
+            class="text-ink-mute mb-4 text-[0.72rem] tracking-[0.22em] uppercase"
+          >
+            {partnership.areasTitle}
+          </p>
+          <h2
+            class="tracking-headline text-ink text-[1.8rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3rem]"
+          >
+            Là où une collaboration <span
+              class="font-display text-brand-deep font-normal italic"
+              >change tout.</span
+            >
+          </h2>
+        </div>
+        <ul class="flex flex-wrap gap-2.5 self-start lg:col-span-7">
+          {
+            partnership.areas.map((area) => (
+              <li class="text-ink rounded-full border border-black/[0.08] bg-[var(--color-paper)] px-5 py-2.5 text-[0.95rem]">
+                {area}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div
+        class="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+      >
+        {
+          projects.items.map((project) => (
+            <article class="rounded-[1.5rem] border border-black/[0.06] bg-[var(--color-paper)] p-7 lg:p-8">
+              <p class="text-brand-deep text-[0.7rem] tracking-[0.18em] uppercase">
+                {projects.status}
+              </p>
+              <h3 class="font-display text-ink mt-5 text-[1.2rem] leading-tight font-medium">
+                {project.title}
+              </h3>
+              <p class="text-ink-mute mt-3 text-[0.88rem] leading-relaxed">
+                {project.description}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-5">
+        <ShieldCheck size={24} className="text-brand" />
+        <p
+          class="text-ink-mute mt-6 mb-4 text-[0.72rem] tracking-[0.22em] uppercase"
+        >
+          Transparence
+        </p>
+        <h2
+          class="tracking-headline text-ink text-[1.8rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3rem]"
+        >
+          {transparency.title}
+        </h2>
+        <div class="mt-6 space-y-4">
+          {
+            transparency.paragraphs.map((paragraph) => (
+              <p class="text-ink-mute max-w-md text-[0.98rem] leading-relaxed">
+                {paragraph}
+              </p>
+            ))
+          }
+        </div>
+      </div>
+      <div class="lg:col-span-7">
+        <div
+          class="rounded-[1.75rem] border border-black/[0.06] bg-white p-8 md:p-10"
+        >
+          <div class="flex items-center gap-3">
+            <FileCheck2 size={20} className="text-brand" strokeWidth={1.7} />
+            <p class="text-ink text-[0.95rem] font-medium">
+              {transparency.documentsTitle}
+            </p>
+          </div>
+          <ul class="mt-7 divide-y divide-black/[0.06]">
+            {
+              transparency.documents.map((document, index) => (
+                <li class="flex items-center gap-4 py-3.5">
+                  <span class="tabular text-ink-mute text-[0.72rem]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span class="text-ink text-[0.95rem]">{document}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-5">
+          <p
+            class="text-ink-mute mb-4 text-[0.72rem] tracking-[0.22em] uppercase"
+          >
+            Nos besoins prioritaires
+          </p>
+          <h2
+            class="tracking-headline text-ink text-[1.8rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3rem]"
+          >
+            Ce dont l'école a <span
+              class="font-display text-brand-deep font-normal italic"
+              >besoin.</span
+            >
+          </h2>
+        </div>
+        <ul class="flex flex-wrap gap-2.5 self-start lg:col-span-7">
+          {
+            priorityNeeds.map((need) => (
+              <li class="text-ink-soft rounded-full border border-black/[0.08] px-4 py-2 text-[0.9rem]">
+                {need}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+    <div
+      class="grain bg-ink relative overflow-hidden rounded-[2.25rem] p-8 text-white md:p-16"
+    >
+      <div
+        class="pointer-events-none absolute -top-32 left-1/2 h-[45rem] w-[45rem] -translate-x-1/2 rounded-full"
+        style="background: radial-gradient(circle, rgba(38,87,238,0.22) 0%, transparent 60%)"
+      >
+      </div>
+      <div class="relative max-w-3xl">
+        <p class="text-[0.72rem] tracking-[0.22em] text-white/45 uppercase">
+          Parlons-en
+        </p>
+        <h2
+          class="tracking-headline balance mt-4 text-[1.8rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3.5rem]"
+        >
+          Discuter d'un <span
+            class="font-display font-normal text-white/75 italic"
+            >partenariat.</span
+          >
+        </h2>
+        <p class="mt-6 max-w-2xl text-[1rem] leading-relaxed text-white/60">
+          Écrivez-nous pour présenter votre organisation et le type de
+          collaboration envisagée. L'ISAJ répond à chaque demande et peut
+          transmettre les documents nécessaires à votre procédure de
+          vérification.
+        </p>
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <a
+            href="/contact?purpose=partner"
+            class="group text-ink inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-white px-7 text-[0.95rem] font-medium transition-all hover:bg-white/90 active:scale-[0.98]"
+            >Discuter d'un partenariat <ArrowUpRight
+              size={16}
+              className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            /></a
+          >
+          <a
+            href={`mailto:${contactDetails.email}`}
+            class="inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-white/15 px-6 text-[0.95rem] font-medium break-all text-white transition-colors hover:bg-white/5"
+            >{contactDetails.email}</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

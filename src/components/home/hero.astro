@@ -1,9 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import { ArrowUpRight } from "lucide-react";
-import imgA from "../../assets/2.jpeg";
-import imgB from "../../assets/5.jpeg";
-import imgC from "../../assets/8.jpeg";
+import imgA from "../../assets/5.jpeg";
+import imgB from "../../assets/2.jpeg";
+import imgC from "../../assets/10.jpeg";
+import { institutionalFacts, schoolIdentity } from "../../data/site-content";
 ---
 
 <section
@@ -11,61 +12,65 @@ import imgC from "../../assets/8.jpeg";
 >
   <div class="mb-10 flex justify-center">
     <span
-      class="text-ink-soft inline-flex items-center gap-2 rounded-full border border-black/8 bg-white/60 px-3 py-1.5 text-[0.78rem] font-medium backdrop-blur-md"
+      class="text-ink-soft inline-flex items-center gap-2 rounded-full border border-black/8 bg-white/60 px-3 py-1.5 text-center text-[0.78rem] font-medium backdrop-blur-md"
     >
-      <span class="bg-brand inline-flex h-1.5 w-1.5 rounded-full"></span>
-      Institution le Saint Justien
+      <span class="bg-brand inline-flex h-1.5 w-1.5 shrink-0 rounded-full"
+      ></span>
+      {schoolIdentity.name} ({schoolIdentity.shortName})
     </span>
   </div>
 
   <div class="relative mx-auto max-w-5xl text-center">
     <h1
-      class="tracking-headline balance text-ink text-[2.6rem] leading-[1.02] font-semibold sm:text-6xl md:text-[5.25rem] md:leading-[0.98]"
+      class="tracking-headline balance text-ink text-[2.4rem] leading-[1.04] font-semibold sm:text-6xl md:text-[5.25rem] md:leading-[0.98]"
     >
-      Bienvenue à
-      <span class="font-display text-brand-deep font-normal italic"
-        >l'ISAJ.</span
-      >
+      Éduquer aujourd'hui,
       <br class="hidden sm:block" />
-      <span class="text-ink-soft">Éduquer aujourd'hui.</span>
+      <span class="font-display text-brand-deep font-normal italic"
+        >construire l'avenir.</span
+      >
     </h1>
 
     <p
-      class="pretty text-ink-mute mx-auto mt-7 max-w-xl text-base leading-relaxed md:text-lg"
+      class="pretty text-ink-mute mx-auto mt-7 max-w-2xl text-base leading-relaxed md:text-lg"
     >
-      Depuis septembre 2011, l'Institution le Saint Justien accompagne les
-      enfants et les jeunes du préscolaire au secondaire. Notre éducation
-      s'appuie sur l'excellence académique, la discipline, les valeurs humaines
-      et le civisme.
+      {institutionalFacts.intro}
+    </p>
+    <p
+      class="pretty text-ink-mute mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg"
+    >
+      {institutionalFacts.introSecond}
+    </p>
+    <p class="pretty text-ink mx-auto mt-4 max-w-2xl text-base font-medium">
+      {institutionalFacts.introThird}
     </p>
 
     <div
-      class="mt-9 flex flex-wrap items-center justify-center gap-x-3 gap-y-2"
+      class="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:gap-y-2"
     >
       <a
-        href="/enrollment"
-        class="group bg-ink hover:bg-ink-soft inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[0.95rem] font-medium text-white transition-all active:scale-[0.98]"
+        href="/about"
+        class="group bg-ink hover:bg-ink-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-[0.95rem] font-medium text-white transition-all active:scale-[0.98]"
       >
-        Demander une inscription
+        Découvrir l'ISAJ
         <ArrowUpRight
           size={17}
           className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
         />
       </a>
       <a
-        href="/about"
-        class="group text-ink decoration-ink/20 hover:decoration-ink/60 inline-flex items-center gap-2 rounded-full px-5 py-3.5 text-[0.95rem] font-medium underline decoration-1 underline-offset-[6px] transition-colors"
+        href="/contact"
+        class="group text-ink inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-black/[0.1] bg-white/70 px-6 text-[0.95rem] font-medium backdrop-blur-md transition-colors hover:bg-white"
       >
-        Découvrir l'ISAJ
+        Nous contacter
+      </a>
+      <a
+        href="/partnership"
+        class="group text-ink decoration-ink/20 hover:decoration-ink/60 inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-5 text-[0.95rem] font-medium underline decoration-1 underline-offset-[6px] transition-colors"
+      >
+        Devenir partenaire
       </a>
     </div>
-
-    <p
-      class="text-ink-mute mx-auto mt-10 max-w-xl text-[0.82rem] leading-relaxed"
-    >
-      Pour les informations officielles sur l'établissement, contactez
-      directement l'ISAJ.
-    </p>
   </div>
 
   <div class="relative mt-20 hidden md:block">
@@ -73,21 +78,21 @@ import imgC from "../../assets/8.jpeg";
       <figure class="col-span-4">
         <Image
           src={imgA}
-          alt="Photographie de l'ISAJ"
+          alt="Élèves du préscolaire de l'Institution Le Saint Justien"
           class="shadow-ink-lg aspect-[4/5] w-full rounded-[2rem] object-cover"
         />
       </figure>
       <figure class="col-span-4 -mb-12 translate-y-6">
         <Image
           src={imgB}
-          alt="Photographie de l'ISAJ"
+          alt="Élèves du fondamental de l'Institution Le Saint Justien"
           class="shadow-ink-lg aspect-[3/4] w-full rounded-[2rem] object-cover"
         />
       </figure>
       <figure class="col-span-4">
         <Image
           src={imgC}
-          alt="Photographie de l'ISAJ"
+          alt="Élèves de l'Institution Le Saint Justien devant l'établissement"
           class="shadow-ink-lg aspect-[5/6] w-full rounded-[2rem] object-cover"
         />
       </figure>
@@ -97,7 +102,7 @@ import imgC from "../../assets/8.jpeg";
   <div class="relative mt-12 md:hidden">
     <Image
       src={imgA}
-      alt="Photographie de l'ISAJ"
+      alt="Élèves du préscolaire de l'Institution Le Saint Justien"
       class="shadow-ink-lg aspect-[4/5] w-full rounded-[2rem] object-cover"
     />
   </div>

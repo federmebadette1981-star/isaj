@@ -1,0 +1,137 @@
+---
+import { ArrowLeft } from "lucide-react";
+import Layout from "../layouts/Layout.astro";
+import { contactDetails, schoolIdentity } from "../data/site-content";
+
+const sections = [
+  {
+    title: "Les informations que nous recevons",
+    paragraphs: [
+      "Le site de l'Institution Le Saint Justien met à disposition deux formulaires : un formulaire de contact et un formulaire de demande de préinscription.",
+      "Les informations que vous y saisissez — nom, adresse e-mail, téléphone, organisation, niveau souhaité et message — nous sont transmises uniquement afin de répondre à votre demande.",
+    ],
+  },
+  {
+    title: "Usage des informations",
+    paragraphs: [
+      "Ces informations sont utilisées exclusivement pour vous répondre et, le cas échéant, pour instruire une demande de préinscription ou une proposition de partenariat.",
+      "Elles ne sont ni vendues, ni louées, ni transmises à des tiers à des fins commerciales.",
+    ],
+  },
+  {
+    title: "Données que nous ne demandons pas",
+    paragraphs: [
+      "Le site ne demande aucune information bancaire, aucun document d'identité et aucune donnée sensible. Ne transmettez jamais d'information de paiement par le biais des formulaires du site.",
+      "Aucune liste nominative d'élèves, aucun document administratif confidentiel et aucune information bancaire de l'établissement n'est publié sur ce site.",
+    ],
+  },
+  {
+    title: "Sécurité",
+    paragraphs: [
+      "Le site est servi en HTTPS : les informations transmises par les formulaires circulent sur une connexion chiffrée.",
+      "Les formulaires sont protégés par des mesures anti-spam et ne conservent aucune donnée dans votre navigateur.",
+    ],
+  },
+  {
+    title: "Photographies des élèves",
+    paragraphs: [
+      "Les photographies publiées sur ce site illustrent la vie de l'établissement. L'ISAJ veille à recueillir le consentement approprié des parents ou tuteurs pour l'utilisation publique de photographies identifiables d'élèves.",
+      "Si vous êtes parent ou tuteur et souhaitez qu'une photographie soit retirée, écrivez-nous : la demande est traitée sans délai.",
+    ],
+  },
+];
+---
+
+<Layout
+  title={`Politique de confidentialité — ${schoolIdentity.name} (ISAJ)`}
+  description="Comment l'Institution Le Saint Justien traite les informations transmises par les formulaires du site et les photographies des élèves."
+>
+  <section
+    class="mx-auto max-w-3xl px-4 pt-12 pb-24 sm:px-6 lg:px-8 lg:pt-16 lg:pb-32"
+  >
+    <a
+      href="/"
+      class="group text-ink-mute hover:text-ink inline-flex items-center gap-2 text-[0.85rem] transition-colors"
+    >
+      <ArrowLeft
+        size={15}
+        className="transition-transform group-hover:-translate-x-0.5"
+      />
+      Retour à l'accueil
+    </a>
+
+    <p class="text-ink-mute mt-10 mb-4 text-[0.72rem] tracking-[0.22em] uppercase">
+      Confidentialité
+    </p>
+    <h1
+      class="tracking-headline balance text-ink text-[2rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3.5rem]"
+    >
+      Politique de <span class="font-display text-brand-deep font-normal italic"
+        >confidentialité.</span
+      >
+    </h1>
+    <p class="text-ink-mute mt-6 text-[1.05rem] leading-[1.8]">
+      L'Institution Le Saint Justien attache de l'importance à la protection des
+      informations que les familles et les partenaires lui confient. Cette page
+      explique simplement ce que nous recevons, ce que nous en faisons et ce que
+      nous ne demandons jamais.
+    </p>
+
+    <div class="mt-16 space-y-14">
+      {
+        sections.map((section, index) => (
+          <section>
+            <span class="tabular text-ink-mute text-[0.72rem]">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <h2
+              class="tracking-headline text-ink mt-3 text-[1.35rem] leading-tight font-semibold md:text-[1.75rem]"
+            >
+              {section.title}
+            </h2>
+            <div class="mt-5 space-y-4">
+              {section.paragraphs.map((paragraph) => (
+                <p class="text-ink-mute text-[1rem] leading-[1.8]">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+
+    <div
+      class="mt-16 rounded-[1.75rem] border border-black/[0.06] bg-white p-8"
+    >
+      <h2 class="font-display text-ink text-[1.35rem] font-medium">
+        Une question sur vos informations ?
+      </h2>
+      <p class="text-ink-mute mt-3 text-[0.95rem] leading-relaxed">
+        Écrivez au secrétariat de l'ISAJ. Vous pouvez demander à consulter, à
+        corriger ou à supprimer les informations que vous nous avez transmises.
+      </p>
+      <ul class="mt-6 space-y-2 text-[0.95rem]">
+        <li>
+          <a
+            href={`mailto:${contactDetails.email}`}
+            class="text-ink hover:text-brand-deep break-all underline underline-offset-4 transition-colors"
+            >{contactDetails.email}</a
+          >
+        </li>
+        {
+          contactDetails.phones.map((phone) => (
+            <li>
+              <a
+                href={phone.href}
+                class="text-ink hover:text-brand-deep inline-flex min-h-11 items-center underline underline-offset-4 transition-colors"
+              >
+                {phone.display}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Layout>

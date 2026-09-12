@@ -3,24 +3,50 @@ import {
   ArrowLeft,
   ArrowUpRight,
   BookOpen,
+  GraduationCap,
   HeartHandshake,
   Landmark,
-  Lightbulb,
+  ShieldCheck,
   Users,
 } from "lucide-react";
 import Layout from "../layouts/Layout.astro";
 import {
+  academicResults,
+  community,
+  inclusion,
   institutionalFacts,
-  institutionalDrafts,
-  perspectives,
+  institutionalFramework,
   schoolIdentity,
   values,
 } from "../data/site-content";
+
+const facts = [
+  {
+    icon: Landmark,
+    label: "Année d'ouverture",
+    value: schoolIdentity.openingDate,
+  },
+  {
+    icon: Users,
+    label: "Élèves",
+    value: `${schoolIdentity.enrollment} élèves`,
+  },
+  {
+    icon: BookOpen,
+    label: "Niveaux d'enseignement",
+    value: "Préscolaire, fondamental et secondaire",
+  },
+  {
+    icon: GraduationCap,
+    label: "Communauté desservie",
+    value: schoolIdentity.location,
+  },
+];
 ---
 
 <Layout
-  title={`À propos — ${schoolIdentity.name}`}
-  description={`${schoolIdentity.name} accompagne les enfants et les jeunes du préscolaire au secondaire à Bon-Repos, Croix-des-Bouquets.`}
+  title={`À propos — ${schoolIdentity.name} (ISAJ)`}
+  description="Histoire, mission, vision, valeurs et cadre institutionnel de l'Institution Le Saint Justien, école privée à Bon-Repos, Croix-des-Bouquets, Haïti."
 >
   <section
     class="mx-auto max-w-7xl px-4 pt-12 pb-20 sm:px-6 lg:px-8 lg:pt-16 lg:pb-24"
@@ -49,7 +75,7 @@ import {
         >
           Éduquer aujourd'hui,
           <span class="font-display text-brand-deep font-normal italic"
-            >préparer l'avenir.</span
+            >construire l'avenir.</span
           >
         </h1>
       </div>
@@ -60,41 +86,27 @@ import {
       </p>
     </div>
     <div
-      class="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-[2rem] bg-black/[0.06] sm:grid-cols-3"
+      class="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-[2rem] bg-black/[0.06] sm:grid-cols-2 lg:grid-cols-4"
     >
-      <div class="bg-white p-7 lg:p-9">
-        <Landmark size={22} className="text-brand" /><p
-          class="text-ink-mute mt-8 text-[0.72rem] tracking-[0.18em] uppercase"
-        >
-          Ouverture officielle
-        </p><p class="font-display text-ink mt-2 text-2xl">
-          {schoolIdentity.openingDate}
-        </p>
-      </div>
-      <div class="bg-white p-7 lg:p-9">
-        <BookOpen size={22} className="text-brand" /><p
-          class="text-ink-mute mt-8 text-[0.72rem] tracking-[0.18em] uppercase"
-        >
-          Parcours
-        </p><p class="font-display text-ink mt-2 text-2xl">
-          Du préscolaire au secondaire
-        </p>
-      </div>
-      <div class="bg-white p-7 lg:p-9">
-        <Users size={22} className="text-brand" /><p
-          class="text-ink-mute mt-8 text-[0.72rem] tracking-[0.18em] uppercase"
-        >
-          Implantation
-        </p><p class="font-display text-ink mt-2 text-2xl">
-          {schoolIdentity.location}
-        </p>
-      </div>
+      {
+        facts.map((fact) => (
+          <div class="bg-white p-7 lg:p-9">
+            <fact.icon size={22} className="text-brand" />
+            <p class="text-ink-mute mt-8 text-[0.72rem] tracking-[0.18em] uppercase">
+              {fact.label}
+            </p>
+            <p class="font-display text-ink mt-2 text-[1.35rem] leading-snug">
+              {fact.value}
+            </p>
+          </div>
+        ))
+      }
     </div>
   </section>
 
   <section class="bg-white">
     <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
-      <div class="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-20">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-20">
         <div class="lg:col-span-4">
           <p class="text-ink-mute text-[0.72rem] tracking-[0.22em] uppercase">
             Notre histoire
@@ -121,22 +133,30 @@ import {
     <div
       class="grid grid-cols-1 gap-px overflow-hidden rounded-[2rem] bg-black/[0.06] md:grid-cols-2"
     >
-      <article class="bg-ink p-9 text-white md:p-12">
+      <article class="bg-ink p-8 text-white md:p-12">
         <p class="text-[0.72rem] tracking-[0.22em] text-white/45 uppercase">
           Notre mission
-        </p><p
-          class="font-display mt-8 text-[1.65rem] leading-[1.35] text-white/90 italic"
+        </p>
+        <p
+          class="font-display mt-8 text-[1.45rem] leading-[1.35] text-white/90 italic md:text-[1.65rem]"
         >
           {institutionalFacts.mission}
         </p>
+        <p class="mt-6 text-[0.95rem] leading-relaxed text-white/60">
+          {institutionalFacts.missionSecond}
+        </p>
       </article>
-      <article class="bg-white p-9 md:p-12">
+      <article class="bg-white p-8 md:p-12">
         <p class="text-ink-mute text-[0.72rem] tracking-[0.22em] uppercase">
           Notre vision
-        </p><p
-          class="font-display text-ink mt-8 text-[1.65rem] leading-[1.35] italic"
+        </p>
+        <p
+          class="font-display text-ink mt-8 text-[1.45rem] leading-[1.35] italic md:text-[1.65rem]"
         >
           {institutionalFacts.vision}
+        </p>
+        <p class="text-ink-mute mt-6 text-[0.95rem] leading-relaxed">
+          {institutionalFacts.approach}
         </p>
       </article>
     </div>
@@ -159,54 +179,75 @@ import {
         </h2>
       </div>
       <ul
-        class="grid grid-cols-2 gap-px overflow-hidden rounded-[1.5rem] bg-black/[0.06] sm:grid-cols-3 lg:grid-cols-5"
+        class="grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] bg-black/[0.06] sm:grid-cols-2 lg:grid-cols-3"
       >
         {
           values.map((value, index) => (
-            <li class="bg-[var(--color-paper)] p-6 lg:p-7">
-              <>
-                <span class="tabular text-ink-mute text-[0.72rem]">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <p class="font-display text-ink mt-10 text-[1.1rem] leading-tight">
-                  {value}
-                </p>
-              </>
+            <li class="bg-[var(--color-paper)] p-7 lg:p-8">
+              <span class="tabular text-ink-mute text-[0.72rem]">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <p class="font-display text-ink mt-8 text-[1.2rem] leading-tight">
+                {value.title}
+              </p>
+              <p class="text-ink-mute mt-3 text-[0.9rem] leading-relaxed">
+                {value.description}
+              </p>
             </li>
           ))
         }
       </ul>
+
+      <div
+        class="mt-10 grid grid-cols-1 gap-8 rounded-[1.75rem] border border-black/[0.06] bg-[var(--color-paper)] p-8 md:grid-cols-12 md:p-12"
+      >
+        <div class="md:col-span-4">
+          <HeartHandshake size={22} className="text-brand" />
+          <h3
+            class="tracking-headline text-ink mt-6 text-[1.5rem] leading-tight font-semibold md:text-[1.9rem]"
+          >
+            {inclusion.title}
+          </h3>
+        </div>
+        <div class="space-y-4 md:col-span-8">
+          {
+            inclusion.paragraphs.map((paragraph) => (
+              <p class="text-ink-mute text-[1rem] leading-[1.75]">
+                {paragraph}
+              </p>
+            ))
+          }
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
     <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
       <div class="lg:col-span-5">
+        <ShieldCheck size={24} className="text-brand" />
         <p
-          class="text-ink-mute mb-4 text-[0.72rem] tracking-[0.22em] uppercase"
+          class="text-ink-mute mt-6 mb-4 text-[0.72rem] tracking-[0.22em] uppercase"
         >
-          Notre approche
-        </p><h2
+          Cadre institutionnel
+        </p>
+        <h2
           class="tracking-headline text-ink text-[1.8rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3rem]"
         >
-          Apprendre, se construire, <span
+          Une école inscrite dans le <span
             class="font-display text-brand-deep font-normal italic"
-            >contribuer.</span
+            >système éducatif haïtien.</span
           >
         </h2>
       </div>
-      <div class="lg:col-span-7">
-        <p class="text-ink-mute max-w-2xl text-[1.15rem] leading-[1.7]">
-          {institutionalFacts.approach}
-        </p><div
-          class="mt-12 flex items-start gap-4 border-t border-black/[0.07] pt-8"
-        >
-          <HeartHandshake size={22} className="text-brand mt-1 shrink-0" /><p
-            class="text-ink-mute max-w-xl text-[0.98rem] leading-relaxed"
-          >
-            {institutionalFacts.community}
-          </p>
-        </div>
+      <div class="space-y-6 lg:col-span-7">
+        {
+          institutionalFramework.paragraphs.map((paragraph) => (
+            <p class="text-ink-mute max-w-2xl text-[1.05rem] leading-[1.8]">
+              {paragraph}
+            </p>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -218,43 +259,62 @@ import {
           <p
             class="text-ink-mute mb-4 text-[0.72rem] tracking-[0.22em] uppercase"
           >
-            Nos perspectives
-          </p><h2
+            Résultats académiques
+          </p>
+          <h2
             class="tracking-headline text-ink text-[1.8rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3rem]"
           >
-            Des axes de développement pour <span
+            Préparer les élèves aux <span
               class="font-display text-brand-deep font-normal italic"
-              >l'avenir.</span
+              >examens officiels.</span
             >
-          </h2><p
-            class="text-ink-mute mt-6 max-w-md text-[0.95rem] leading-relaxed"
-          >
-            Ces perspectives décrivent des axes de renforcement et non des
-            services déjà disponibles.
-          </p>
-        </div><ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:col-span-7">
+          </h2>
+        </div>
+        <div class="space-y-6 lg:col-span-7">
           {
-            perspectives.map((item, index) => (
-              <li class="flex items-start gap-3 rounded-2xl border border-black/[0.06] p-5">
-                <>
-                  <span class="tabular text-brand-deep text-[0.72rem]">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span class="text-ink text-[0.92rem] leading-relaxed">
-                    {item}
-                  </span>
-                </>
-              </li>
+            academicResults.paragraphs.map((paragraph) => (
+              <p class="text-ink-mute max-w-2xl text-[1.05rem] leading-[1.8]">
+                {paragraph}
+              </p>
             ))
           }
-        </ul>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-5">
+        <p
+          class="text-ink-mute mb-4 text-[0.72rem] tracking-[0.22em] uppercase"
+        >
+          Notre communauté
+        </p>
+        <h2
+          class="tracking-headline text-ink text-[1.8rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3rem]"
+        >
+          Une école ancrée à <span
+            class="font-display text-brand-deep font-normal italic"
+            >Bon-Repos.</span
+          >
+        </h2>
+      </div>
+      <div class="space-y-6 lg:col-span-7">
+        {
+          community.paragraphs.map((paragraph) => (
+            <p class="text-ink-mute max-w-2xl text-[1.05rem] leading-[1.8]">
+              {paragraph}
+            </p>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8 lg:pb-32">
     <div
-      class="grid grid-cols-1 gap-8 rounded-[2rem] border border-black/[0.06] bg-white p-9 md:grid-cols-2 md:p-14"
+      class="grid grid-cols-1 gap-8 rounded-[2rem] border border-black/[0.06] bg-white p-8 md:grid-cols-2 md:p-14"
     >
       <div>
         <p
@@ -270,12 +330,12 @@ import {
           >
         </h2>
       </div><blockquote
-        class="font-display text-ink text-[1.25rem] leading-[1.55] italic"
+        class="font-display text-ink text-[1.2rem] leading-[1.55] italic md:text-[1.25rem]"
       >
         «&nbsp;{institutionalFacts.directorMessage}&nbsp;»<footer
           class="text-ink-mute mt-6 font-sans text-[0.78rem] not-italic"
         >
-          Osnel Saint-Juste · Directeur fondateur
+          Osnel Saint-Juste · Directeur Fondateur
         </footer>
       </blockquote>
     </div>
@@ -283,11 +343,9 @@ import {
 
   <section class="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8 lg:pb-32">
     <div
-      class="grain bg-ink relative overflow-hidden rounded-[2.25rem] p-10 text-white md:p-16"
+      class="grain bg-ink relative overflow-hidden rounded-[2.25rem] p-8 text-white md:p-16"
     >
-      <Lightbulb className="text-white/75" size={24} /><p
-        class="mt-6 text-[0.72rem] tracking-[0.22em] text-white/45 uppercase"
-      >
+      <p class="text-[0.72rem] tracking-[0.22em] text-white/45 uppercase">
         Partenariats
       </p><h2
         class="tracking-headline mt-4 max-w-3xl text-[1.8rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3.5rem]"
@@ -296,47 +354,25 @@ import {
           class="font-display font-normal text-white/75 italic">ensemble.</span
         >
       </h2><p class="mt-6 max-w-2xl text-[1rem] leading-relaxed text-white/60">
-        {institutionalFacts.partnerMessage}
-      </p><a
-        href="/contact?purpose=partner"
-        class="group text-ink mt-9 inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-[0.95rem] font-medium transition-all hover:bg-white/90 active:scale-[0.98]"
-        >Devenir partenaire <ArrowUpRight
-          size={16}
-          className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-        /></a
-      >
-    </div>
-  </section>
-
-  <section class="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8 lg:pb-32">
-    <div class="mb-10">
-      <p class="text-ink-mute mb-4 text-[0.72rem] tracking-[0.22em] uppercase">
-        Informations à compléter
-      </p><h2
-        class="tracking-headline text-ink text-3xl leading-[1.05] font-semibold md:text-[2.75rem]"
-      >
-        Les éléments nécessitant une validation officielle.
-      </h2>
-    </div><div
-      class="grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] bg-black/[0.06] md:grid-cols-2 lg:grid-cols-3"
-    >
-      {
-        institutionalDrafts.map((item) => (
-          <article class="bg-white p-7">
-            <>
-              <p class="text-brand-deep text-[0.7rem] tracking-[0.18em] uppercase">
-                À confirmer
-              </p>
-              <h3 class="font-display text-ink mt-5 text-[1.25rem] font-medium">
-                {item.title}
-              </h3>
-              <p class="text-ink-mute mt-3 text-[0.88rem] leading-relaxed">
-                {item.text}
-              </p>
-            </>
-          </article>
-        ))
-      }
+        L'ISAJ souhaite développer des partenariats responsables et durables
+        avec des fondations, ONG, établissements scolaires, entreprises,
+        associations, organisations communautaires et donateurs.
+      </p>
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <a
+          href="/partnership"
+          class="group text-ink inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-white px-7 text-[0.95rem] font-medium transition-all hover:bg-white/90 active:scale-[0.98]"
+          >Discuter d'un partenariat <ArrowUpRight
+            size={16}
+            className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          /></a
+        >
+        <a
+          href="/projects"
+          class="inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-white/15 px-6 text-[0.95rem] font-medium text-white transition-colors hover:bg-white/5"
+          >Voir nos projets</a
+        >
+      </div>
     </div>
   </section>
 </Layout>

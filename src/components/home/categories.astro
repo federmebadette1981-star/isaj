@@ -1,5 +1,6 @@
 ---
 import { ArrowUpRight } from "lucide-react";
+import { institutionalFacts } from "../../data/site-content";
 
 const cards = [
   {
@@ -7,18 +8,24 @@ const cards = [
     subtitle: "Confiance · Autonomie · Collaboration",
     image: "/cround.jpeg",
     number: "01",
+    href: "/grade/prescolaire",
+    alt: "Élèves de l'ISAJ pendant une activité de groupe",
   },
   {
     title: "L'imagination, un pouvoir",
     subtitle: "Créativité · Curiosité · Expression",
     image: "/isaj-4.jpeg",
     number: "02",
+    href: "/grade/fondamental",
+    alt: "Travail en classe à l'Institution Le Saint Justien",
   },
   {
     title: "Déployer ses propres ailes",
     subtitle: "Excellence · Persévérance · Caractère",
     image: "/isaj-3.jpeg",
     number: "03",
+    href: "/grade/secondaire",
+    alt: "Élèves du secondaire de l'Institution Le Saint Justien",
   },
 ];
 ---
@@ -40,16 +47,15 @@ const cards = [
         >
       </h2>
     </div>
-    <div class="flex items-center gap-8">
-      <p class="text-ink-mute max-w-xs text-[0.9rem] leading-relaxed">
-        Une approche cohérente où chaque enfant développe sa propre voix — une
-        leçon à la fois.
+    <div class="flex flex-col items-start gap-6 md:max-w-xs">
+      <p class="text-ink-mute text-[0.95rem] leading-relaxed">
+        {institutionalFacts.institutionalPromise}
       </p>
       <a
         href="/enrollment"
-        class="group text-ink hover:bg-ink hidden shrink-0 items-center gap-2 rounded-full border border-black/[0.08] px-5 py-3 text-[0.85rem] font-medium transition-colors hover:text-white sm:inline-flex"
+        class="group text-ink hover:bg-ink inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full border border-black/[0.08] px-5 text-[0.85rem] font-medium transition-colors hover:text-white"
       >
-        Inscrivez-vous
+        Demande de préinscription
         <ArrowUpRight
           size={15}
           className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -62,14 +68,14 @@ const cards = [
     {
       cards.map((card) => (
         <a
-          href="/curriculum"
+          href={card.href}
           class="group bg-ink shadow-ink relative flex h-80 flex-col overflow-hidden rounded-[1.75rem] text-white sm:h-112"
         >
-          {/* Image — top portion */}
           <div class="absolute inset-0 overflow-hidden">
             <img
               src={card.image}
-              alt="Photographie locale de l'ISAJ"
+              alt={card.alt}
+              loading="lazy"
               class="h-full w-full object-cover opacity-70 transition-all duration-[1200ms] ease-out group-hover:scale-105 group-hover:opacity-80"
             />
             <div class="from-ink via-ink/70 to-ink/10 absolute inset-0 bg-gradient-to-t" />

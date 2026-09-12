@@ -1,27 +1,20 @@
 ---
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Globe2 } from "lucide-react";
 import Layout from "../layouts/Layout.astro";
+import {
+  institutionalFacts,
+  schoolIdentity,
+  teamMembers,
+  usRepresentation,
+} from "../data/site-content";
 
-const principles = [
-  {
-    no: "01",
-    title: "L'élève d'abord",
-    body: "Les informations publiées doivent rester centrées sur le parcours et l'accompagnement des élèves.",
-  },
-  {
-    no: "02",
-    title: "Une information exacte",
-    body: "Les noms, fonctions, qualifications et responsabilités seront publiés après validation par l'établissement.",
-  },
-  {
-    no: "03",
-    title: "Une équipe à découvrir",
-    body: "Contactez l'ISAJ pour connaître l'équipe actuellement en fonction et les possibilités de collaboration.",
-  },
-];
+const founders = teamMembers.slice(0, 2);
 ---
 
-<Layout>
+<Layout
+  title={`Notre équipe — ${schoolIdentity.name} (ISAJ)`}
+  description="La direction, l'équipe académique et l'équipe administrative de l'Institution Le Saint Justien, à Bon-Repos, Croix-des-Bouquets."
+>
   <section class="mx-auto max-w-7xl px-4 pt-16 pb-12 sm:px-6 lg:px-8 lg:pt-24">
     <div class="grid grid-cols-1 items-end gap-12 lg:grid-cols-12">
       <div class="lg:col-span-8">
@@ -42,9 +35,8 @@ const principles = [
       <p
         class="pretty text-ink-mute max-w-md text-[1rem] leading-relaxed lg:col-span-4"
       >
-        La composition de l'équipe, les fonctions et les biographies seront
-        publiées uniquement après confirmation par l'Institution le Saint
-        Justien.
+        Une direction, une équipe académique et une équipe administrative
+        engagées auprès des élèves et des familles de Bon-Repos.
       </p>
     </div>
   </section>
@@ -55,7 +47,7 @@ const principles = [
     >
       <article class="bg-ink p-8 text-white md:p-14">
         <p class="text-[0.72rem] tracking-[0.22em] text-white/45 uppercase">
-          Direction fondatrice
+          {founders[0].role}
         </p>
         <h2
           class="tracking-headline mt-5 max-w-3xl text-[1.75rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3.25rem]"
@@ -65,15 +57,14 @@ const principles = [
           >
         </h2>
         <p class="mt-6 max-w-xl text-[0.98rem] leading-relaxed text-white/65">
-          Jeune normalien diplômé de l'École Normale Supérieure (ENS), Monsieur
-          Osnel Saint-Juste a pris l'initiative de créer l'ISAJ pour contribuer
-          à l'accès à une éducation structurée et fondée sur des valeurs
-          humaines et civiques.
+          Fondateur de l'Institution Le Saint Justien, ouverte en septembre
+          2011, il dirige l'établissement et porte sa mission éducative au
+          service des enfants et des familles de la communauté de Bon-Repos.
         </p>
       </article>
       <article class="bg-white p-8 md:p-14">
         <p class="text-ink-mute text-[0.72rem] tracking-[0.22em] uppercase">
-          Co-fondateur
+          {founders[1].role}
         </p>
         <h2
           class="tracking-headline text-ink mt-5 max-w-3xl text-[1.75rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3.25rem]"
@@ -83,82 +74,95 @@ const principles = [
           >
         </h2>
         <p class="text-ink-mute mt-6 max-w-xl text-[0.98rem] leading-relaxed">
-          Jeune universitaire, Monsieur Federme Badette s'est engagé avec
-          détermination, dynamisme et persévérance dans la concrétisation du
-          projet éducatif de l'ISAJ.
+          Cofondateur de l'établissement, il a participé à la création de l'ISAJ
+          et accompagne aujourd'hui son développement, notamment dans les
+          démarches de partenariat et de coopération.
         </p>
       </article>
     </div>
-    <p class="text-ink-mute mt-6 text-[0.82rem]">
-      La présentation de l'équipe pédagogique et administrative sera ajoutée
-      après validation de la liste officielle et des autorisations de
-      publication.
-    </p>
-    <a
-      href="/contact"
-      class="group bg-ink hover:bg-ink-soft mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[0.9rem] font-medium text-white transition-all active:scale-[0.98]"
-      >Demander les informations à jour <ArrowUpRight
-        size={15}
-        className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-      /></a
-    >
+  </section>
+
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+      <div class="mb-14 max-w-2xl">
+        <p
+          class="text-ink-mute mb-4 text-[0.72rem] tracking-[0.22em] uppercase"
+        >
+          Direction, équipe académique et administration
+        </p>
+        <h2
+          class="tracking-headline balance text-ink text-[1.75rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3.25rem]"
+        >
+          Une équipe au service <span
+            class="font-display text-brand-deep font-normal italic"
+            >des élèves.</span
+          >
+        </h2>
+      </div>
+      <ul
+        class="grid grid-cols-1 gap-px overflow-hidden rounded-[2rem] bg-black/[0.06] sm:grid-cols-2 lg:grid-cols-4"
+      >
+        {
+          teamMembers.map((member, index) => (
+            <li class="flex flex-col bg-[var(--color-paper)] p-7 lg:p-8">
+              <span class="tabular text-ink-mute text-[0.72rem] font-medium">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3 class="font-display text-ink mt-10 text-[1.35rem] leading-tight font-medium tracking-[-0.015em]">
+                {member.name}
+              </h3>
+              <p class="text-brand-deep mt-2 text-[0.85rem] leading-relaxed">
+                {member.role}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="text-ink-mute mt-6 text-[0.85rem]">
+        Ces {teamMembers.length} responsables composent la direction, l'équipe
+        académique et l'administration de l'ISAJ, aux côtés de l'équipe
+        enseignante.
+      </p>
+    </div>
   </section>
 
   <section class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
-    <div class="mb-14 max-w-2xl">
-      <p class="text-ink-mute mb-4 text-[0.72rem] tracking-[0.22em] uppercase">
-        Notre engagement
-      </p>
-      <h2
-        class="tracking-headline balance text-ink text-[1.75rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3.25rem]"
-      >
-        Une présentation <span
-          class="font-display text-brand-deep font-normal italic"
-          >responsable.</span
-        >
-      </h2>
-    </div>
-    <ol
-      class="grid grid-cols-1 gap-px overflow-hidden rounded-[2rem] bg-black/[0.06] md:grid-cols-3"
-    >
-      {
-        principles.map((principle) => (
-          <li class="flex flex-col bg-white p-9 lg:p-10">
-            <span class="tabular text-ink-mute text-[0.78rem] font-medium">
-              {principle.no} / 03
-            </span>
-            <h3 class="font-display text-ink mt-12 text-[1.5rem] leading-tight font-medium tracking-[-0.015em]">
-              {principle.title}
-            </h3>
-            <p class="text-ink-mute mt-3 text-[0.92rem] leading-relaxed">
-              {principle.body}
-            </p>
-          </li>
-        ))
-      }
-    </ol>
-  </section>
-
-  <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
     <div
-      class="rounded-[1.5rem] border border-black/[0.06] bg-white p-7 lg:p-9"
+      class="grid grid-cols-1 gap-10 rounded-[2rem] border border-black/[0.06] bg-white p-8 md:grid-cols-12 md:p-14"
     >
-      <p class="text-brand-deep text-[0.7rem] tracking-[0.18em] uppercase">
-        À confirmer
-      </p>
-      <h2 class="font-display text-ink mt-5 text-[1.5rem] font-medium">
-        Équipe pédagogique et administrative
-      </h2>
-      <p class="text-ink-mute mt-3 max-w-2xl text-[0.92rem] leading-relaxed">
-        Les membres de l'équipe et leurs fonctions seront ajoutés après
-        validation de la liste officielle et accord de publication.
-      </p>
+      <div class="md:col-span-5">
+        <Globe2 size={24} className="text-brand" />
+        <p
+          class="text-ink-mute mt-6 mb-4 text-[0.72rem] tracking-[0.22em] uppercase"
+        >
+          À l'international
+        </p>
+        <h2
+          class="tracking-headline text-ink text-[1.6rem] leading-[1.08] font-semibold md:text-[2.25rem]"
+        >
+          {usRepresentation.title}
+        </h2>
+      </div>
+      <div class="md:col-span-7">
+        <ul class="flex flex-wrap gap-2">
+          {
+            usRepresentation.names.map((name) => (
+              <li class="text-ink rounded-full border border-black/[0.08] bg-[var(--color-paper)] px-4 py-2 text-[0.92rem] font-medium">
+                {name}
+              </li>
+            ))
+          }
+        </ul>
+        <p class="text-ink-mute mt-6 text-[1rem] leading-[1.75]">
+          {usRepresentation.description}
+        </p>
+      </div>
     </div>
   </section>
 
   <section class="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8 lg:pb-32">
     <div
-      class="grid grid-cols-1 items-center gap-8 rounded-[2rem] border border-black/[0.06] bg-white p-9 md:grid-cols-2 md:p-12"
+      class="grid grid-cols-1 items-center gap-8 rounded-[2rem] border border-black/[0.06] bg-white p-8 md:grid-cols-2 md:p-12"
     >
       <div>
         <p
@@ -175,14 +179,14 @@ const principles = [
           > ?
         </h2>
         <p class="text-ink-mute mt-4 max-w-md text-[0.95rem] leading-relaxed">
-          Écrivez à l'ISAJ pour obtenir les informations actuelles sur la
-          direction, les enseignants et les possibilités de collaboration.
+          {institutionalFacts.institutionalPromise} Écrivez à l'ISAJ pour toute
+          question sur la scolarité, l'admission ou une collaboration.
         </p>
       </div>
       <div class="flex flex-col gap-3 md:items-end">
         <a
           href="/contact"
-          class="group bg-ink hover:bg-ink-soft inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[0.95rem] font-medium text-white transition-all active:scale-[0.98]"
+          class="group bg-ink hover:bg-ink-soft inline-flex min-h-13 items-center justify-center gap-2 rounded-full px-6 text-[0.95rem] font-medium text-white transition-all active:scale-[0.98]"
           >Nous contacter <ArrowUpRight
             size={16}
             className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -190,7 +194,7 @@ const principles = [
         >
         <a
           href="/curriculum"
-          class="group text-ink-mute decoration-ink/15 hover:text-ink hover:decoration-ink inline-flex items-center gap-1.5 text-[0.85rem] font-medium underline decoration-1 underline-offset-[6px] transition-colors"
+          class="group text-ink-mute decoration-ink/15 hover:text-ink hover:decoration-ink inline-flex min-h-11 items-center gap-1.5 text-[0.85rem] font-medium underline decoration-1 underline-offset-[6px] transition-colors"
           >Voir le programme <ArrowRight
             size={13}
             className="transition-transform group-hover:translate-x-0.5"

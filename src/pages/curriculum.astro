@@ -1,25 +1,16 @@
 ---
-import {
-  ArrowLeft,
-  ArrowRight,
-  ArrowUpRight,
-  Brain,
-  Compass,
-  GraduationCap,
-  Microscope,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import Layout from "../layouts/Layout.astro";
-import { institutionalDrafts } from "../data/site-content";
 import { gradeProfiles } from "../data/grade-profiles";
+import { academicResults, schoolIdentity } from "../data/site-content";
 
-const icons = [Compass, Microscope, Brain, GraduationCap];
-const curriculumLevels = gradeProfiles.map((level, index) => ({
-  ...level,
-  icon: icons[index],
-}));
+const total = String(gradeProfiles.length).padStart(2, "0");
 ---
 
-<Layout>
+<Layout
+  title={`Programme scolaire — ${schoolIdentity.name} (ISAJ)`}
+  description="Le programme de l'ISAJ, du préscolaire au secondaire : sections, objectifs pédagogiques, principales matières et approche pédagogique."
+>
   <section
     class="mx-auto max-w-7xl px-4 pt-12 pb-20 sm:px-6 lg:px-8 lg:pt-16 lg:pb-24"
   >
@@ -46,60 +37,18 @@ const curriculumLevels = gradeProfiles.map((level, index) => ({
         <h1
           class="tracking-headline balance text-ink text-[2rem] leading-[1.02] font-semibold sm:text-5xl md:text-[5.5rem]"
         >
-          Le programme,
+          Notre programme,
           <span class="font-display text-brand-deep font-normal italic"
-            >niveau par niveau.</span
+            >section par section.</span
           >
         </h1>
       </div>
       <p
         class="pretty text-ink-mute max-w-md text-[1rem] leading-relaxed lg:col-span-4"
       >
-        Découvrez les grandes étapes du parcours présenté par l'Institution le
-        Saint Justien. Les détails administratifs et les tranches d'âge sont à
-        confirmer auprès de l'établissement.
+        L'ISAJ accompagne les élèves dans les différentes étapes de leur
+        parcours scolaire, du préscolaire au secondaire.
       </p>
-    </div>
-
-    <div
-      class="mt-16 grid grid-cols-2 gap-y-8 border-y border-black/[0.07] py-8 lg:grid-cols-4"
-    >
-      <div class="px-4">
-        <div
-          class="tabular text-ink text-[2rem] leading-none font-semibold md:text-[2.5rem]"
-        >
-          04
-        </div><p class="text-ink-mute mt-2.5 text-[0.78rem] leading-snug">
-          Parcours détaillés
-        </p>
-      </div>
-      <div class="border-black/[0.07] px-4 lg:border-l">
-        <div
-          class="text-ink text-[2rem] leading-none font-semibold md:text-[2.5rem]"
-        >
-          ISAJ
-        </div><p class="text-ink-mute mt-2.5 text-[0.78rem] leading-snug">
-          Parcours scolaire
-        </p>
-      </div>
-      <div class="border-black/[0.07] px-4 lg:border-l">
-        <div
-          class="text-ink text-[2rem] leading-none font-semibold md:text-[2.5rem]"
-        >
-          À
-        </div><p class="text-ink-mute mt-2.5 text-[0.78rem] leading-snug">
-          Confirmer avec l'école
-        </p>
-      </div>
-      <div class="border-black/[0.07] px-4 lg:border-l">
-        <div
-          class="text-ink text-[2rem] leading-none font-semibold md:text-[2.5rem]"
-        >
-          01
-        </div><p class="text-ink-mute mt-2.5 text-[0.78rem] leading-snug">
-          Source officielle à venir
-        </p>
-      </div>
     </div>
 
     <div class="mt-16 grid grid-cols-1 gap-12 lg:grid-cols-12">
@@ -110,11 +59,11 @@ const curriculumLevels = gradeProfiles.map((level, index) => ({
       </p>
       <ol class="space-y-1 lg:col-span-9">
         {
-          curriculumLevels.map((level, idx) => (
+          gradeProfiles.map((level, idx) => (
             <li>
               <a
-                href={`#chapitre-${idx + 1}`}
-                class="group hover:text-brand-deep flex items-baseline justify-between gap-4 border-b border-black/[0.06] py-3.5 transition-colors"
+                href={`#section-${level.id}`}
+                class="group hover:text-brand-deep flex items-baseline justify-between gap-4 border-b border-black/[0.06] py-4 transition-colors"
               >
                 <span class="flex items-baseline gap-5">
                   <span class="tabular text-ink-mute text-[0.78rem] font-medium">
@@ -125,7 +74,7 @@ const curriculumLevels = gradeProfiles.map((level, index) => ({
                   </span>
                 </span>
                 <span class="mx-3 mb-2 hidden flex-1 self-end border-b border-dotted border-black/15 md:block" />
-                <span class="text-ink-mute text-[0.8rem] whitespace-nowrap">
+                <span class="text-ink-mute hidden text-[0.8rem] whitespace-nowrap sm:block">
                   {level.grades}
                 </span>
               </a>
@@ -137,42 +86,32 @@ const curriculumLevels = gradeProfiles.map((level, index) => ({
   </section>
 
   {
-    curriculumLevels.map((level, idx) => (
+    gradeProfiles.map((level, idx) => (
       <section
-        id={`chapitre-${idx + 1}`}
+        id={`section-${level.id}`}
         class={`scroll-mt-24 ${idx % 2 === 1 ? "bg-white" : ""}`}
       >
         <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
           <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
             <div class="lg:col-span-4">
               <div class="lg:sticky lg:top-28">
-                <div class="flex items-center justify-between">
-                  <p class="tabular text-ink-mute text-[0.78rem] font-medium tracking-[0.18em] uppercase">
-                    Chapitre {String(idx + 1).padStart(2, "0")} / 04
-                  </p>
-                  <level.icon
-                    size={20}
-                    strokeWidth={1.6}
-                    className="text-ink-mute"
-                  />
-                </div>
-                <h2 class="tracking-headline text-ink mt-10 text-[1.75rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3rem]">
+                <p class="tabular text-ink-mute text-[0.78rem] font-medium tracking-[0.18em] uppercase">
+                  Section {String(idx + 1).padStart(2, "0")} / {total}
+                </p>
+                <h2 class="tracking-headline text-ink mt-8 text-[1.75rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3rem]">
                   {level.title}
                 </h2>
-                <p class="font-display text-ink-soft mt-4 text-[1.25rem] leading-snug italic">
+                <p class="font-display text-ink-soft mt-4 text-[1.2rem] leading-snug italic">
                   {level.subtitle}.
                 </p>
-                <p class="text-brand-deep mt-6 text-[0.85rem]">
-                  {level.grades} · {level.ageRange}
-                </p>
-                <p class="text-ink-mute mt-6 max-w-md text-[0.92rem] leading-relaxed">
+                <p class="text-ink-mute mt-6 max-w-md text-[0.95rem] leading-relaxed">
                   {level.overview}
                 </p>
                 <a
                   href={`/grade/${level.id}`}
-                  class="group text-ink decoration-ink/15 hover:text-brand-deep hover:decoration-brand-deep mt-10 inline-flex items-center gap-1.5 text-[0.9rem] font-medium underline decoration-1 underline-offset-[6px] transition-colors"
+                  class="group text-ink decoration-ink/15 hover:text-brand-deep hover:decoration-brand-deep mt-10 inline-flex min-h-11 items-center gap-1.5 text-[0.9rem] font-medium underline decoration-1 underline-offset-[6px] transition-colors"
                 >
-                  Voir le détail du niveau
+                  Voir le détail de la section
                   <ArrowUpRight
                     size={14}
                     className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -182,24 +121,54 @@ const curriculumLevels = gradeProfiles.map((level, index) => ({
             </div>
             <div class="lg:col-span-8">
               <div class="grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] bg-black/[0.06] md:grid-cols-3">
-                {level.details.map((detail, dIdx) => (
-                  <div class="flex flex-col bg-[var(--color-paper)] p-7 lg:p-8">
-                    <span class="tabular text-ink-mute text-[0.72rem] tracking-[0.18em] uppercase">
-                      {String(dIdx + 1).padStart(2, "0")}
-                    </span>
-                    <h3 class="font-display text-ink mt-8 text-[1.1rem] leading-tight font-medium">
-                      {detail.label}
-                    </h3>
-                    <ul class="mt-5 space-y-3">
-                      {detail.items.map((item) => (
-                        <li class="text-ink-soft flex items-start gap-2.5 text-[0.88rem] leading-snug">
-                          <span class="bg-ink/30 mt-1.5 inline-block h-1 w-1 shrink-0 rounded-full" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
+                <div class="flex flex-col bg-[var(--color-paper)] p-7 lg:p-8">
+                  <span class="tabular text-ink-mute text-[0.72rem] tracking-[0.18em] uppercase">
+                    01
+                  </span>
+                  <h3 class="font-display text-ink mt-8 text-[1.1rem] leading-tight font-medium">
+                    Classes concernées
+                  </h3>
+                  <ul class="mt-5 space-y-3">
+                    {level.classes.map((item) => (
+                      <li class="text-ink-soft flex items-start gap-2.5 text-[0.88rem] leading-snug">
+                        <span class="bg-ink/30 mt-1.5 inline-block h-1 w-1 shrink-0 rounded-full" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div class="flex flex-col bg-[var(--color-paper)] p-7 lg:p-8">
+                  <span class="tabular text-ink-mute text-[0.72rem] tracking-[0.18em] uppercase">
+                    02
+                  </span>
+                  <h3 class="font-display text-ink mt-8 text-[1.1rem] leading-tight font-medium">
+                    Objectifs pédagogiques
+                  </h3>
+                  <ul class="mt-5 space-y-3">
+                    {level.objectives.map((item) => (
+                      <li class="text-ink-soft flex items-start gap-2.5 text-[0.88rem] leading-snug">
+                        <span class="bg-ink/30 mt-1.5 inline-block h-1 w-1 shrink-0 rounded-full" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div class="flex flex-col bg-[var(--color-paper)] p-7 lg:p-8">
+                  <span class="tabular text-ink-mute text-[0.72rem] tracking-[0.18em] uppercase">
+                    03
+                  </span>
+                  <h3 class="font-display text-ink mt-8 text-[1.1rem] leading-tight font-medium">
+                    Principales matières
+                  </h3>
+                  <ul class="mt-5 space-y-3">
+                    {level.subjects.map((item) => (
+                      <li class="text-ink-soft flex items-start gap-2.5 text-[0.88rem] leading-snug">
+                        <span class="bg-ink/30 mt-1.5 inline-block h-1 w-1 shrink-0 rounded-full" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -209,43 +178,37 @@ const curriculumLevels = gradeProfiles.map((level, index) => ({
   }
 
   <section class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
-    <div class="mb-12 max-w-2xl">
-      <p class="text-ink-mute mb-4 text-[0.72rem] tracking-[0.22em] uppercase">
-        Informations institutionnelles
-      </p>
-      <h2
-        class="tracking-headline text-ink text-[1.75rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3rem]"
-      >
-        Ce que nous vérifions <span
-          class="font-display text-brand-deep font-normal italic"
-          >avec l'ISAJ.</span
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-5">
+        <p
+          class="text-ink-mute mb-4 text-[0.72rem] tracking-[0.22em] uppercase"
         >
-      </h2>
-    </div>
-    <div
-      class="grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] bg-black/[0.06] md:grid-cols-2"
-    >
-      {
-        institutionalDrafts.map((item) => (
-          <article class="bg-white p-7 lg:p-9">
-            <p class="text-brand-deep text-[0.7rem] tracking-[0.18em] uppercase">
-              À confirmer
+          Résultats académiques
+        </p>
+        <h2
+          class="tracking-headline text-ink text-[1.75rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3rem]"
+        >
+          Une préparation suivie aux <span
+            class="font-display text-brand-deep font-normal italic"
+            >examens officiels.</span
+          >
+        </h2>
+      </div>
+      <div class="space-y-6 lg:col-span-7">
+        {
+          academicResults.paragraphs.map((paragraph) => (
+            <p class="text-ink-mute max-w-2xl text-[1.05rem] leading-[1.8]">
+              {paragraph}
             </p>
-            <h3 class="font-display text-ink mt-5 text-[1.35rem] font-medium">
-              {item.title}
-            </h3>
-            <p class="text-ink-mute mt-3 text-[0.92rem] leading-relaxed">
-              {item.text}
-            </p>
-          </article>
-        ))
-      }
+          ))
+        }
+      </div>
     </div>
   </section>
 
   <section class="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8 lg:pb-32">
     <div
-      class="grain bg-ink relative overflow-hidden rounded-[2.25rem] p-10 text-white md:rounded-[2.5rem] md:p-16"
+      class="grain bg-ink relative overflow-hidden rounded-[2.25rem] p-8 text-white md:rounded-[2.5rem] md:p-16"
     >
       <div
         class="pointer-events-none absolute -top-32 right-0 h-[40rem] w-[40rem] rounded-full"
@@ -255,24 +218,24 @@ const curriculumLevels = gradeProfiles.map((level, index) => ({
       <div class="relative grid grid-cols-1 items-end gap-10 md:grid-cols-12">
         <div class="md:col-span-7">
           <p class="text-[0.72rem] tracking-[0.22em] text-white/45 uppercase">
-            Parlons du parcours
+            Admissions
           </p>
           <h2
             class="tracking-headline balance mt-4 text-[1.75rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3.5rem]"
           >
-            Une question sur un <span
-              class="font-display font-normal text-white/75 italic">niveau</span
+            Une question sur une <span
+              class="font-display font-normal text-white/75 italic">section</span
             > ?
           </h2>
           <p class="mt-6 max-w-lg text-[0.95rem] leading-relaxed text-white/55">
-            Contactez l'établissement pour obtenir les informations actuelles
-            sur les niveaux, les âges et les conditions d'admission.
+            Le secrétariat de l'ISAJ informe les familles sur les niveaux, le
+            dossier à constituer et les modalités d'inscription.
           </p>
         </div>
         <div class="flex flex-col gap-3 md:col-span-5 md:items-end">
           <a
             href="/contact"
-            class="group text-ink inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-[0.95rem] font-medium transition-all hover:bg-white/90 active:scale-[0.98]"
+            class="group text-ink inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-white px-7 text-[0.95rem] font-medium transition-all hover:bg-white/90 active:scale-[0.98]"
             >Nous contacter <ArrowUpRight
               size={16}
               className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -280,8 +243,8 @@ const curriculumLevels = gradeProfiles.map((level, index) => ({
           >
           <a
             href="/enrollment"
-            class="group inline-flex items-center gap-1.5 text-[0.88rem] font-medium text-white/85 underline decoration-white/25 decoration-1 underline-offset-[6px] transition-colors hover:text-white hover:decoration-white"
-            >Demander une inscription <ArrowRight
+            class="group inline-flex min-h-11 items-center gap-1.5 text-[0.88rem] font-medium text-white/85 underline decoration-white/25 decoration-1 underline-offset-[6px] transition-colors hover:text-white hover:decoration-white"
+            >Demande de préinscription <ArrowRight
               size={13}
               className="transition-transform group-hover:translate-x-0.5"
             /></a

@@ -1,13 +1,14 @@
 ---
-import { ArrowRight, Baby, BookOpen, GraduationCap, Zap } from "lucide-react";
+import { ArrowRight, Baby, BookOpen, GraduationCap } from "lucide-react";
 import { schoolLevels } from "../../data/site-content";
 
-const icons = [Baby, BookOpen, Zap, GraduationCap];
+const icons = [Baby, BookOpen, GraduationCap];
 
 const stages = schoolLevels.map((level, index) => ({
   ...level,
   icon: icons[index],
 }));
+const total = String(stages.length).padStart(2, "0");
 ---
 
 <section class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
@@ -16,33 +17,35 @@ const stages = schoolLevels.map((level, index) => ({
   >
     <div class="max-w-2xl">
       <p class="text-ink-mute mb-4 text-[0.72rem] tracking-[0.22em] uppercase">
-        Le parcours
+        Notre programme scolaire
       </p>
       <h2
         class="tracking-headline balance text-ink text-[1.75rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3.25rem]"
       >
-        Le parcours scolaire de l'ISAJ
+        Du préscolaire au <span
+          class="font-display text-brand-deep font-normal italic">secondaire.</span
+        >
       </h2>
     </div>
     <p class="pretty text-ink-mute max-w-sm text-[0.95rem] leading-relaxed">
-      Découvrez les niveaux présentés par l'ISAJ. Les appellations et tranches
-      d'âge sont à confirmer par l'établissement.
+      L'ISAJ accompagne les élèves dans les différentes étapes de leur parcours
+      scolaire, du préscolaire au secondaire.
     </p>
   </div>
 
   <ol
-    class="relative grid grid-cols-1 gap-px overflow-hidden rounded-[2rem] bg-black/[0.06] sm:grid-cols-2 lg:grid-cols-4"
+    class="relative grid grid-cols-1 gap-px overflow-hidden rounded-[2rem] bg-black/[0.06] md:grid-cols-3"
   >
     {
       stages.map((stage, idx) => (
         <li class="bg-white">
           <a
             href={`/grade/${stage.id}`}
-            class="group relative flex h-full flex-col p-8 transition-colors hover:bg-[#fdf9f2] lg:p-9"
+            class="group relative flex h-full flex-col p-8 transition-colors hover:bg-[#fbfcfe] lg:p-9"
           >
             <div class="flex items-center justify-between">
               <span class="tabular text-ink-mute text-[0.78rem] font-medium">
-                {String(idx + 1).padStart(2, "0")} / 04
+                {String(idx + 1).padStart(2, "0")} / {total}
               </span>
               <stage.icon
                 size={20}
@@ -52,10 +55,7 @@ const stages = schoolLevels.map((level, index) => ({
             </div>
 
             <div class="mt-12">
-              <p class="text-brand text-[0.78rem] font-medium tracking-[0.18em] uppercase">
-                {stage.ageRange}
-              </p>
-              <h3 class="text-ink mt-2 text-[1.45rem] leading-tight font-semibold tracking-[-0.02em]">
+              <h3 class="text-ink text-[1.45rem] leading-tight font-semibold tracking-[-0.02em]">
                 {stage.title}
               </h3>
               <p class="font-display text-ink-soft mt-1 text-[0.95rem] italic">
@@ -67,7 +67,7 @@ const stages = schoolLevels.map((level, index) => ({
             </div>
 
             <div class="text-ink group-hover:text-brand mt-8 flex items-center gap-1.5 text-[0.82rem] font-medium transition-colors">
-              Voir le niveau
+              Voir la section
               <ArrowRight
                 size={14}
                 className="transition-transform group-hover:translate-x-1"
@@ -84,16 +84,16 @@ const stages = schoolLevels.map((level, index) => ({
   >
     <div>
       <p class="font-display text-ink text-[1.3rem] italic">
-        Une question sur les niveaux ?
+        Une question sur une section ?
       </p>
       <p class="text-ink-mute mt-1 text-[0.9rem]">
-        Pour connaître les niveaux et conditions d'admission à jour, contactez
-        directement l'ISAJ.
+        Le secrétariat de l'ISAJ répond aux familles sur les niveaux, le dossier
+        et les modalités d'inscription.
       </p>
     </div>
     <a
       href="/contact"
-      class="group bg-ink hover:bg-ink-soft inline-flex shrink-0 items-center gap-2 rounded-full px-6 py-3 text-[0.9rem] font-medium text-white transition-all active:scale-[0.97]"
+      class="group bg-ink hover:bg-ink-soft inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full px-6 text-[0.9rem] font-medium text-white transition-all active:scale-[0.97]"
     >
       Nous contacter
       <ArrowRight

@@ -1,8 +1,167 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import GalleryContentPage from "../components/gallery-content-page";
+import { schoolIdentity } from "../data/site-content";
+
+import prescolaireGroupe from "../assets/5.jpeg";
+import fondamentalGroupe from "../assets/2.jpeg";
+import fondamentalGroupe2 from "../assets/10.jpeg";
+import equipeEducative from "../assets/teams.jpeg";
+import membreEquipe from "../assets/3.jpeg";
+import direction from "../assets/director-1.jpeg";
+import noelEnfants from "../assets/4.jpeg";
+import noelFamille from "../assets/7.jpeg";
+import noelPetits from "../assets/9.jpeg";
+import noelPortrait from "../assets/11.jpeg";
+import noelSapin from "../assets/6.jpeg";
+
+/**
+ * Galerie — photographies réelles de l'établissement, classées par catégorie.
+ * Chaque légende décrit ce que montre effectivement la photographie.
+ */
+const items = [
+  {
+    id: "etablissement-facade",
+    category: "Notre établissement",
+    title: "Les locaux de l'ISAJ",
+    image: "/isaj-3.jpeg",
+    alt: "Façade de l'Institution Le Saint Justien avec des élèves du secondaire",
+  },
+  {
+    id: "etablissement-cour",
+    category: "Notre établissement",
+    title: "Dans la cour de l'école",
+    image: "/cround.jpeg",
+    alt: "Élèves rassemblés dans la cour de l'ISAJ",
+  },
+  {
+    id: "classe-secondaire",
+    category: "Vie en classe",
+    title: "Une classe du secondaire",
+    image: "/isaj-1.jpeg",
+    alt: "Élèves du secondaire en uniforme, assis en salle de classe",
+  },
+  {
+    id: "classe-prescolaire",
+    category: "Vie en classe",
+    title: "Activité au préscolaire",
+    image: "/kids-1.jpeg",
+    alt: "Enfants du préscolaire présentant leurs bricolages en classe",
+  },
+  {
+    id: "eleves-prescolaire",
+    category: "Nos élèves",
+    title: "Les élèves du préscolaire",
+    image: prescolaireGroupe.src,
+    alt: "Groupe d'élèves du préscolaire de l'ISAJ en uniforme jaune",
+  },
+  {
+    id: "eleves-fondamental",
+    category: "Nos élèves",
+    title: "Les élèves du fondamental",
+    image: fondamentalGroupe.src,
+    alt: "Groupe d'élèves du fondamental de l'ISAJ en uniforme",
+  },
+  {
+    id: "eleves-fondamental-2",
+    category: "Nos élèves",
+    title: "Une classe du fondamental",
+    image: fondamentalGroupe2.src,
+    alt: "Élèves du fondamental de l'ISAJ devant l'établissement",
+  },
+  {
+    id: "eleves-secondaire",
+    category: "Nos élèves",
+    title: "Les élèves du secondaire",
+    image: "/graduate.jpeg",
+    alt: "Élèves du secondaire de l'ISAJ en uniforme devant l'établissement",
+  },
+  {
+    id: "equipe-educative",
+    category: "Notre équipe éducative",
+    title: "L'équipe de l'établissement",
+    image: equipeEducative.src,
+    alt: "Membres de l'équipe éducative et administrative de l'ISAJ",
+  },
+  {
+    id: "equipe-membre",
+    category: "Notre équipe éducative",
+    title: "Un membre de l'équipe",
+    image: membreEquipe.src,
+    alt: "Membre de l'équipe éducative de l'ISAJ devant l'établissement",
+  },
+  {
+    id: "equipe-direction",
+    category: "Notre équipe éducative",
+    title: "La direction de l'ISAJ",
+    image: direction.src,
+    alt: "Portrait d'un responsable de la direction de l'ISAJ",
+  },
+  {
+    id: "activites-fanfare",
+    category: "Activités scolaires",
+    title: "La fanfare de l'école",
+    image: "/isaj-2.jpeg",
+    alt: "Trois élèves de l'ISAJ jouant des instruments à vent",
+  },
+  {
+    id: "evenement-noel-1",
+    category: "Événements",
+    title: "Fête de Noël",
+    image: noelEnfants.src,
+    alt: "Élèves et enseignante lors de la fête de Noël de l'ISAJ",
+  },
+  {
+    id: "evenement-noel-2",
+    category: "Événements",
+    title: "Célébration de fin d'année",
+    image: noelFamille.src,
+    alt: "Élèves en tenue de fête devant le sapin de l'ISAJ",
+  },
+  {
+    id: "evenement-noel-3",
+    category: "Événements",
+    title: "Les plus jeunes à la fête",
+    image: noelPetits.src,
+    alt: "Jeunes élèves de l'ISAJ lors de la fête de Noël",
+  },
+  {
+    id: "evenement-noel-4",
+    category: "Événements",
+    title: "Un moment de fête",
+    image: noelPortrait.src,
+    alt: "Un élève et un membre de l'équipe lors de la fête de Noël",
+  },
+  {
+    id: "evenement-noel-5",
+    category: "Événements",
+    title: "Autour du sapin",
+    image: noelSapin.src,
+    alt: "Un jeune élève de l'ISAJ devant le sapin de Noël",
+  },
+];
+
+const videos = [
+  {
+    id: "fanfare",
+    title: "La fanfare de l'ISAJ",
+    description: "Répétition de la fanfare de l'établissement.",
+    src: "/videos/phanphare.mp4",
+    poster: "/isaj-2.jpeg",
+  },
+  {
+    id: "vie-scolaire",
+    title: "La vie à l'école",
+    description: "Les élèves de l'ISAJ pendant une activité scolaire.",
+    src: "/videos/kids.mp4",
+    poster: "/kids-1.jpeg",
+  },
+];
 ---
 
-<Layout>
-    <GalleryContentPage client:load/>
+<Layout
+  title={`Galerie — ${schoolIdentity.name} (ISAJ)`}
+  description="Photographies et vidéos de l'Institution Le Saint Justien : l'établissement, la vie en classe, les élèves, l'équipe éducative, les activités et les événements."
+>
+  <GalleryContentPage client:load items={items} videos={videos} />
 </Layout>

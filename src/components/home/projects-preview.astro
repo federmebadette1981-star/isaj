@@ -1,0 +1,85 @@
+---
+import { ArrowUpRight, Cpu, HeartHandshake, Music, Scissors, Sun } from "lucide-react";
+import { projects } from "../../data/site-content";
+
+const icons = [Cpu, Sun, Scissors, Music, HeartHandshake];
+const items = projects.items.map((item, index) => ({
+  ...item,
+  icon: icons[index] ?? Cpu,
+}));
+---
+
+<section class="relative overflow-hidden py-24 lg:py-32">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mb-16 grid grid-cols-1 items-end gap-8 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <p
+          class="text-ink-mute mb-4 text-[0.72rem] tracking-[0.22em] uppercase"
+        >
+          Priorités de développement
+        </p>
+        <h2
+          class="tracking-headline balance text-ink text-[1.75rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3.25rem]"
+        >
+          Les projets de <span
+            class="font-display text-brand-deep font-normal italic">l'ISAJ</span
+          >
+        </h2>
+      </div>
+      <p
+        class="pretty text-ink-mute text-[0.95rem] leading-relaxed lg:col-span-5"
+      >
+        {projects.intro}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        items.map((project, index) => (
+          <article class="group relative rounded-[1.5rem] border border-black/[0.06] bg-white p-7 transition-colors hover:bg-[#fbfcfe] lg:p-8">
+            <div class="flex items-start justify-between">
+              <project.icon
+                size={22}
+                strokeWidth={1.6}
+                className="text-ink transition-colors group-hover:text-brand"
+              />
+              <span class="tabular text-ink-mute text-[0.7rem]">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+            </div>
+            <h3 class="font-display text-ink mt-10 text-[1.25rem] leading-tight font-medium tracking-[-0.015em]">
+              {project.title}
+            </h3>
+            <p class="text-ink-mute mt-2 text-[0.88rem] leading-relaxed">
+              {project.description}
+            </p>
+            <p class="text-brand-deep mt-5 text-[0.7rem] tracking-[0.18em] uppercase">
+              {projects.status}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="mt-12 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+      <a
+        href="/projects"
+        class="group bg-ink hover:bg-ink-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-[0.9rem] font-medium text-white transition-all active:scale-[0.98]"
+        >Soutenir un projet <ArrowUpRight
+          size={15}
+          className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        /></a
+      >
+      <a
+        href="/partnership"
+        class="text-ink inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-black/[0.1] bg-white px-6 text-[0.9rem] font-medium transition-colors hover:bg-black/[0.03]"
+        >Devenir partenaire</a
+      >
+      <a
+        href="/contact"
+        class="text-ink decoration-ink/20 hover:decoration-ink inline-flex min-h-12 items-center justify-center gap-2 px-2 text-[0.9rem] font-medium underline decoration-1 underline-offset-[6px] transition-colors"
+        >Contacter l'ISAJ</a
+      >
+    </div>
+  </div>
+</section>
