@@ -3,49 +3,42 @@ import {
   ArrowUpRight,
   ChevronLeft,
   ChevronRight,
-  Pause,
-  Play,
   X,
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+
+export type ResponsiveImage = {
+  src: string;
+  srcset: string;
+  width: number;
+  height: number;
+};
 
 export type GalleryItem = {
   id: string;
   title: string;
   category: string;
-  image: string;
   alt: string;
-};
-
-export type GalleryVideo = {
-  id: string;
-  title: string;
-  description: string;
-  src: string;
-  poster: string;
+  /** Variantes pour la mosaïque. */
+  thumb: ResponsiveImage;
+  /** Variantes pour la visionneuse plein écran. */
+  full: ResponsiveImage;
 };
 
 type Props = {
   items: GalleryItem[];
-  videos: GalleryVideo[];
 };
 
 const ALL = "Tout";
 
-const GalleryContentPage = ({ items, videos }: Props) => {
+const GalleryContentPage = ({ items }: Props) => {
   const categories = [ALL, ...Array.from(new Set(items.map((i) => i.category)))];
   const [activeCategory, setActiveCategory] = useState<string>(ALL);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [activeVideoId, setActiveVideoId] = useState(videos[0]?.id ?? "");
-  const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
   const filteredItems =
     activeCategory === ALL
       ? items
       : items.filter((item) => item.category === activeCategory);
-
-  const activeVideo = videos.find((v) => v.id === activeVideoId) ?? videos[0];
 
   useEffect(() => {
     if (selectedIndex === null) return;
@@ -83,22 +76,6 @@ const GalleryContentPage = ({ items, videos }: Props) => {
         ? null
         : (current - 1 + filteredItems.length) % filteredItems.length,
     );
-
-  const handleSelectVideo = (id: string) => {
-    if (id === activeVideoId) return;
-    setActiveVideoId(id);
-    setIsPlaying(false);
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.load();
-    }
-  };
-
-  const handlePlayPause = () => {
-    if (!videoRef.current) return;
-    if (isPlaying) videoRef.current.pause();
-    else void videoRef.current.play();
-  };
 
   return (
     <section className="mx-auto max-w-7xl px-4 pt-12 pb-24 sm:px-6 lg:px-8 lg:pt-16 lg:pb-32">
@@ -177,9 +154,14 @@ const GalleryContentPage = ({ items, videos }: Props) => {
             className="group bg-ink relative mb-5 block w-full cursor-zoom-in break-inside-avoid overflow-hidden rounded-[1.25rem] text-left lg:mb-6"
           >
             <img
-              src={item.image}
+              src={item.thumb.src}
+              srcSet={item.thumb.srcset}
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              width={item.thumb.width}
+              height={item.thumb.height}
               alt={item.alt}
               loading="lazy"
+              decoding="async"
               className="h-auto w-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-[1.04]"
             />
             <div className="from-ink/85 via-ink/30 pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t to-transparent p-6">
@@ -198,138 +180,6 @@ const GalleryContentPage = ({ items, videos }: Props) => {
           </button>
         ))}
       </div>
-
-      {videos.length > 0 && activeVideo && (
-        <div className="mt-24">
-          <div className="mb-10 max-w-2xl">
-            <p className="text-ink-mute mb-4 text-[0.72rem] tracking-[0.22em] uppercase">
-              Vidéos
-            </p>
-            <h2 className="tracking-headline balance text-ink text-[1.75rem] leading-[1.05] font-semibold sm:text-4xl">
-              L'école en{" "}
-              <span className="font-display text-brand-deep font-normal italic">
-                mouvement.
-              </span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
-            <div className="lg:col-span-8">
-              <div className="bg-ink shadow-ink-lg relative overflow-hidden rounded-[2rem]">
-                <div className="relative aspect-video w-full">
-                  <video
-                    ref={videoRef}
-                    key={activeVideo.src}
-                    poster={activeVideo.poster}
-                    className="h-full w-full object-cover"
-                    onPlay={() => setIsPlaying(true)}
-                    onPause={() => setIsPlaying(false)}
-                    onEnded={() => setIsPlaying(false)}
-                    preload="none"
-                    playsInline
-                    controls={isPlaying}
-                  >
-                    <source src={activeVideo.src} type="video/mp4" />
-                  </video>
-
-                  {!isPlaying && (
-                    <div className="bg-ink/50 absolute inset-0 flex flex-col items-center justify-center backdrop-blur-[2px]">
-                      <button
-                        onClick={handlePlayPause}
-                        className="flex h-20 w-20 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-white/20"
-                        aria-label={`Lire la vidéo : ${activeVideo.title}`}
-                      >
-                        <Play size={28} className="ml-1 text-white" fill="white" />
-                      </button>
-                      <div className="mt-6 max-w-sm px-8 text-center">
-                        <h3 className="font-display text-[1.35rem] leading-tight font-medium text-white italic">
-                          {activeVideo.title}
-                        </h3>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className="flex items-center justify-between gap-4 px-6 py-4">
-                  <div>
-                    <p className="text-[0.92rem] font-medium text-white">
-                      {activeVideo.title}
-                    </p>
-                    <p className="text-[0.78rem] text-white/50">
-                      {activeVideo.description}
-                    </p>
-                  </div>
-                  {isPlaying && (
-                    <button
-                      type="button"
-                      onClick={handlePlayPause}
-                      className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 text-white"
-                      aria-label="Mettre en pause"
-                    >
-                      <Pause size={16} />
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-row gap-4 lg:col-span-4 lg:flex-col">
-              {videos.map((video, idx) => {
-                const active = video.id === activeVideoId;
-                return (
-                  <button
-                    key={video.id}
-                    onClick={() => handleSelectVideo(video.id)}
-                    className={`group relative flex flex-1 flex-col overflow-hidden rounded-[1.25rem] text-left transition-all duration-300 lg:flex-none ${
-                      active
-                        ? "ring-brand ring-2 ring-offset-2"
-                        : "ring-1 ring-black/[0.06] hover:ring-black/[0.12]"
-                    }`}
-                  >
-                    <div className="relative aspect-video w-full overflow-hidden">
-                      <img
-                        src={video.poster}
-                        alt=""
-                        loading="lazy"
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                      />
-                      <div className="bg-ink/30 absolute inset-0" />
-                      <div
-                        className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
-                          active ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-                        }`}
-                      >
-                        <div
-                          className={`flex h-10 w-10 items-center justify-center rounded-full backdrop-blur-sm transition-all ${
-                            active ? "bg-brand" : "bg-white/20"
-                          }`}
-                        >
-                          <Play size={13} className="ml-0.5 text-white" fill="white" />
-                        </div>
-                      </div>
-                      <span className="tabular absolute top-3 left-3 text-[0.68rem] font-medium text-white/70">
-                        {String(idx + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                    <div className="bg-white px-4 py-3">
-                      <p
-                        className={`text-[0.88rem] leading-snug font-medium transition-colors ${
-                          active ? "text-brand-deep" : "text-ink group-hover:text-brand-deep"
-                        }`}
-                      >
-                        {video.title}
-                      </p>
-                      <p className="text-ink-mute mt-0.5 text-[0.75rem]">
-                        {video.description}
-                      </p>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      )}
 
       {selectedIndex !== null && filteredItems[selectedIndex] && (
         <div
@@ -383,7 +233,9 @@ const GalleryContentPage = ({ items, videos }: Props) => {
             onClick={(event) => event.stopPropagation()}
           >
             <img
-              src={filteredItems[selectedIndex].image}
+              src={filteredItems[selectedIndex].full.src}
+              srcSet={filteredItems[selectedIndex].full.srcset}
+              sizes="(min-width: 1024px) 80vw, 100vw"
               alt={filteredItems[selectedIndex].alt}
               className="max-h-[74vh] max-w-full rounded-[1.25rem] object-contain"
             />

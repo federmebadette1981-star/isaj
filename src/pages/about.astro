@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   Users,
 } from "lucide-react";
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import { photos } from "../data/photos";
 import {
@@ -126,9 +127,11 @@ const facts = [
             ))
           }
           <figure class="overflow-hidden rounded-[1.75rem] pt-4">
-            <img
-              src={photos.logoMural.src}
+            <Image
+              src={photos.logoMural.image}
               alt={photos.logoMural.alt}
+              widths={[400, 800, 1200]}
+              sizes="(min-width: 1024px) 66vw, 100vw"
               loading="lazy"
               class="h-64 w-full rounded-[1.75rem] object-cover sm:h-80 md:h-[26rem]"
             />
@@ -321,9 +324,11 @@ const facts = [
           ))
         }
         <figure class="pt-2">
-          <img
-            src={photos.rassemblement.src}
+          <Image
+            src={photos.rassemblement.image}
             alt={photos.rassemblement.alt}
+            widths={[400, 800, 1200]}
+            sizes="(min-width: 1024px) 58vw, 100vw"
             loading="lazy"
             class="h-64 w-full rounded-[1.75rem] object-cover sm:h-80 md:h-[26rem]"
           />

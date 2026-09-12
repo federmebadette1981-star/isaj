@@ -74,28 +74,28 @@ const showcase = [
     <div class="grid grid-cols-12 items-end gap-6">
       <figure class="col-span-4">
         <Image
-          src={showcase[0].src}
+          src={showcase[0].image}
           alt={showcase[0].alt}
-          width={1600}
-          height={1066}
+          widths={[400, 800]}
+          sizes="(min-width: 768px) 33vw, 100vw"
           class="shadow-ink-lg aspect-[4/5] w-full rounded-[2rem] object-cover"
         />
       </figure>
       <figure class="col-span-4 -mb-12 translate-y-6">
         <Image
-          src={showcase[1].src}
+          src={showcase[1].image}
           alt={showcase[1].alt}
-          width={1600}
-          height={1066}
+          widths={[400, 800]}
+          sizes="(min-width: 768px) 33vw, 100vw"
           class="shadow-ink-lg aspect-[3/4] w-full rounded-[2rem] object-cover"
         />
       </figure>
       <figure class="col-span-4">
         <Image
-          src={showcase[2].src}
+          src={showcase[2].image}
           alt={showcase[2].alt}
-          width={1600}
-          height={1066}
+          widths={[400, 800]}
+          sizes="(min-width: 768px) 33vw, 100vw"
           class="shadow-ink-lg aspect-[5/6] w-full rounded-[2rem] object-cover"
         />
       </figure>
@@ -104,10 +104,10 @@ const showcase = [
 
   <div class="relative mt-10 md:hidden">
     <Image
-      src={showcase[0].src}
+      src={showcase[0].image}
       alt={showcase[0].alt}
-      width={1600}
-      height={1066}
+      widths={[400, 800]}
+      sizes="100vw"
       class="shadow-ink-lg aspect-[4/5] w-full rounded-[2rem] object-cover"
     />
   </div>

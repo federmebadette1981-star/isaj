@@ -2,37 +2,32 @@
 import Layout from "../layouts/Layout.astro";
 import GalleryContentPage from "../components/gallery-content-page";
 import { galleryPhotos } from "../data/photos";
+import { responsiveImage } from "../lib/images";
 import { schoolIdentity } from "../data/site-content";
 
-const items = galleryPhotos.map((photo) => ({
-  id: photo.src,
-  category: photo.category,
-  title: photo.title,
-  image: photo.src,
-  alt: photo.alt,
-}));
-
-const videos = [
-  {
-    id: "fanfare",
-    title: "La fanfare de l'ISAJ",
-    description: "Répétition de la fanfare de l'établissement.",
-    src: "/videos/phanphare.mp4",
-    poster: "/isaj-15.jpeg",
-  },
-  {
-    id: "vie-scolaire",
-    title: "La vie à l'école",
-    description: "Les élèves de l'ISAJ pendant une activité scolaire.",
-    src: "/videos/kids.mp4",
-    poster: "/kids-1.jpeg",
-  },
-];
+/**
+ * Deux jeux de variantes par photo :
+ *  - `thumb` pour la mosaïque (au plus un tiers de la largeur d'écran) ;
+ *  - `full` pour la visionneuse plein écran, où la qualité doit tenir à l'agrandissement.
+ * Les dimensions d'origine sont transmises telles quelles : sans elles, la
+ * mosaïque s'effondre à zéro pixel de haut et le navigateur télécharge toutes
+ * les images d'un coup au lieu de respecter `loading="lazy"`.
+ */
+const items = await Promise.all(
+  galleryPhotos.map(async (photo) => ({
+    id: photo.key,
+    category: photo.category,
+    title: photo.title,
+    alt: photo.alt,
+    thumb: await responsiveImage(photo.image, [400, 800]),
+    full: await responsiveImage(photo.image, [1200, 1600]),
+  })),
+);
 ---
 
 <Layout
   title={`Galerie — ${schoolIdentity.name} (ISAJ)`}
-  description="Photographies et vidéos de l'Institution Le Saint Justien : l'établissement, la vie en classe, les élèves, l'équipe éducative, les activités scolaires et les cérémonies."
+  description="Photographies de l'Institution Le Saint Justien : l'établissement, la vie en classe, les élèves, l'équipe éducative, les activités scolaires et les cérémonies."
 >
-  <GalleryContentPage client:load items={items} videos={videos} />
+  <GalleryContentPage client:load items={items} />
 </Layout>

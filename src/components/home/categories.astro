@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { ArrowUpRight } from "lucide-react";
 import { photos } from "../../data/photos";
 import { institutionalFacts } from "../../data/site-content";
@@ -7,7 +8,7 @@ const cards = [
   {
     title: "Les premiers apprentissages",
     subtitle: "Éveil · Langage · Autonomie",
-    image: photos.leconEleves.src,
+    image: photos.leconEleves.image,
     alt: photos.leconEleves.alt,
     number: "01",
     href: "/grade/prescolaire",
@@ -15,7 +16,7 @@ const cards = [
   {
     title: "Des bases solides",
     subtitle: "Lecture · Raisonnement · Méthode",
-    image: photos.fondamentalClasse.src,
+    image: photos.fondamentalClasse.image,
     alt: photos.fondamentalClasse.alt,
     number: "02",
     href: "/grade/fondamental",
@@ -23,7 +24,7 @@ const cards = [
   {
     title: "Déployer ses propres ailes",
     subtitle: "Excellence · Persévérance · Caractère",
-    image: photos.secondaireGroupe.src,
+    image: photos.secondaireGroupe.image,
     alt: photos.secondaireGroupe.alt,
     number: "03",
     href: "/grade/secondaire",
@@ -73,9 +74,11 @@ const cards = [
           class="group bg-ink shadow-ink relative flex h-80 flex-col overflow-hidden rounded-[1.75rem] text-white sm:h-112"
         >
           <div class="absolute inset-0 overflow-hidden">
-            <img
+            <Image
               src={card.image}
               alt={card.alt}
+              widths={[400, 800]}
+              sizes="(min-width: 768px) 33vw, 100vw"
               loading="lazy"
               class="h-full w-full object-cover opacity-70 transition-all duration-[1200ms] ease-out group-hover:scale-105 group-hover:opacity-80"
             />

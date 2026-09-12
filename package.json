@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev --host",
-    "build": "astro build",
+    "build": "astro build && node scripts/prune-unused-assets.mjs",
     "validate:content": "node scripts/validate-content.mjs",
     "preview": "astro preview",
     "astro": "astro"

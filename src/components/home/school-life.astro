@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { ArrowUpRight } from "lucide-react";
 import { photos } from "../../data/photos";
 
@@ -64,9 +65,11 @@ const moments = [
               index === 0 ? "md:col-span-3" : ""
             }`}
           >
-            <img
-              src={moment.src}
+            <Image
+              src={moment.image}
               alt={moment.alt}
+              widths={[400, 800, 1200]}
+              sizes={index === 0 ? "100vw" : "(min-width: 768px) 33vw, 100vw"}
               loading="lazy"
               class={`w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105 ${
                 index === 0

@@ -18,15 +18,43 @@ statique.
 « brouillon Gmail », « Académie des Petits Isajiens »…) réapparaît dans `src/`.
 À exécuter avant chaque mise en ligne.
 
+## Hébergement — Cloudflare Pages
+
+Le site est un build statique : Cloudflare Pages le sert depuis son CDN mondial,
+avec bande passante illimitée sur le plan gratuit et HTTPS inclus.
+
+Configuration du projet Pages :
+
+| Réglage                  | Valeur          |
+| :----------------------- | :-------------- |
+| Framework preset         | Astro           |
+| Build command            | `npm run build` |
+| Build output directory   | `dist`          |
+
+Le fichier `public/_headers` définit la politique de cache et les en-têtes de
+sécurité ; Cloudflare le lit automatiquement dans le dossier de sortie.
+
+- `/_astro/*` — noms de fichiers hachés par Astro, donc mis en cache **un an**
+  en `immutable`. Un visiteur qui revient ne retélécharge aucune image.
+- `/favicon.svg` et `/og-isaj.jpg` — noms fixes : cache d'un jour avec
+  revalidation en arrière-plan.
+- HTML — jamais mis en cache durablement : c'est lui qui pointe vers les
+  nouveaux noms hachés après un déploiement.
+
+**Ne jamais remettre d'image dans `public/`** : les fichiers y sont servis bruts,
+sans recompression ni variantes de taille. Les photos vivent dans
+`src/assets/photos/` et passent par `src/data/photos.ts`.
+
 ## Variables d'environnement
 
-À définir sur Vercel (Settings → Environment Variables), puis redéployer.
+À définir dans Cloudflare Pages (Settings → Environment variables), puis
+redéployer.
 
 | Variable                | Rôle                                                                 |
 | :---------------------- | :------------------------------------------------------------------- |
 | `PUBLIC_WEB3FORMS_KEY`  | **Requis pour l'envoi réel des formulaires.** Clé d'accès gratuite obtenue sur [web3forms.com](https://web3forms.com) avec l'adresse officielle de l'école. |
 | `PUBLIC_FORM_ENDPOINT`  | Alternative : URL d'un autre service de formulaire (Formspree, etc.). Ignorée si `PUBLIC_WEB3FORMS_KEY` est définie. |
-| `PUBLIC_SITE_URL`       | Domaine du site, utilisé pour les URL canoniques et l'aperçu des liens (Open Graph). Défaut : `https://isaj.vercel.app`. À changer lors du passage au domaine officiel. |
+| `PUBLIC_SITE_URL`       | Domaine du site, utilisé pour les URL canoniques et l'aperçu des liens (Open Graph). Défaut : `https://isaj.pages.dev`. À changer lors du passage au domaine officiel. |
 
 ### Formulaires
 
@@ -39,6 +67,16 @@ Tant qu'aucune clé n'est configurée, les formulaires restent utilisables : le
 message est remis au logiciel de messagerie du visiteur, avec un message de
 confirmation adapté. **Configurez `PUBLIC_WEB3FORMS_KEY` avant la mise en ligne
 officielle** pour que les demandes arrivent directement dans la boîte de l'école.
+
+## Images
+
+Les photographies sont dans `src/assets/photos/` et décrites une seule fois dans
+`src/data/photos.ts`. Au build, Astro génère pour chacune plusieurs largeurs en
+WebP (qualité 85) : une vignette de galerie reçoit une image de 400 ou 800 px au
+lieu de l'original de 1600 px, sans perte visible.
+
+Résultat mesuré sur mobile : galerie 9,7 Mo → 0,3 Mo avant défilement, et
+11,3 Mo → 1,5 Mo page entière.
 
 ## Informations institutionnelles
 
