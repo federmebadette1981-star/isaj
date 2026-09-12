@@ -1,6 +1,7 @@
 ---
 import { ArrowRight, ArrowUpRight, Globe2 } from "lucide-react";
 import Layout from "../layouts/Layout.astro";
+import { photos } from "../data/photos";
 import {
   institutionalFacts,
   schoolIdentity,
@@ -38,6 +39,27 @@ const founders = teamMembers.slice(0, 2);
         Une direction, une équipe académique et une équipe administrative
         engagées auprès des élèves et des familles de Bon-Repos.
       </p>
+    </div>
+
+    <div class="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3">
+      {
+        [photos.equipe, photos.enseignantes, photos.direction].map(
+          (photo) => (
+            <figure class="group relative overflow-hidden rounded-[1.75rem]">
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                loading="lazy"
+                class="h-64 w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105 sm:h-80 md:h-[22rem]"
+              />
+              <div class="from-ink/85 absolute inset-0 bg-gradient-to-t via-transparent to-transparent" />
+              <figcaption class="absolute inset-x-0 bottom-0 p-6 text-[0.95rem] font-medium text-white">
+                {photo.title}
+              </figcaption>
+            </figure>
+          ),
+        )
+      }
     </div>
   </section>
 

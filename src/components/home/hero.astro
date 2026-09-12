@@ -1,16 +1,21 @@
 ---
 import { Image } from "astro:assets";
 import { ArrowUpRight } from "lucide-react";
-import imgA from "../../assets/5.jpeg";
-import imgB from "../../assets/2.jpeg";
-import imgC from "../../assets/10.jpeg";
+import { photos } from "../../data/photos";
 import { institutionalFacts, schoolIdentity } from "../../data/site-content";
+
+/** Un groupe par section : préscolaire, fondamental, secondaire. */
+const showcase = [
+  photos.prescolaireGroupe,
+  photos.fondamentalGroupe,
+  photos.secondaireLigne,
+];
 ---
 
 <section
-  class="relative mx-auto max-w-7xl px-4 pt-10 pb-24 sm:px-6 lg:px-8 lg:pt-16 lg:pb-32"
+  class="relative mx-auto max-w-7xl px-4 pt-8 pb-16 sm:px-6 sm:pb-24 lg:px-8 lg:pt-16 lg:pb-32"
 >
-  <div class="mb-10 flex justify-center">
+  <div class="mb-8 flex justify-center sm:mb-10">
     <span
       class="text-ink-soft inline-flex items-center gap-2 rounded-full border border-black/8 bg-white/60 px-3 py-1.5 text-center text-[0.78rem] font-medium backdrop-blur-md"
     >
@@ -32,21 +37,13 @@ import { institutionalFacts, schoolIdentity } from "../../data/site-content";
     </h1>
 
     <p
-      class="pretty text-ink-mute mx-auto mt-7 max-w-2xl text-base leading-relaxed md:text-lg"
+      class="pretty text-ink-mute mx-auto mt-6 max-w-xl text-[0.98rem] leading-relaxed sm:mt-7 md:text-[1.05rem]"
     >
-      {institutionalFacts.intro}
-    </p>
-    <p
-      class="pretty text-ink-mute mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg"
-    >
-      {institutionalFacts.introSecond}
-    </p>
-    <p class="pretty text-ink mx-auto mt-4 max-w-2xl text-base font-medium">
-      {institutionalFacts.introThird}
+      {institutionalFacts.heroIntro}
     </p>
 
     <div
-      class="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:gap-y-2"
+      class="mt-8 flex flex-col items-stretch justify-center gap-2.5 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:gap-y-2"
     >
       <a
         href="/about"
@@ -73,36 +70,44 @@ import { institutionalFacts, schoolIdentity } from "../../data/site-content";
     </div>
   </div>
 
-  <div class="relative mt-20 hidden md:block">
+  <div class="relative mt-16 hidden md:block lg:mt-20">
     <div class="grid grid-cols-12 items-end gap-6">
       <figure class="col-span-4">
         <Image
-          src={imgA}
-          alt="Élèves du préscolaire de l'Institution Le Saint Justien"
+          src={showcase[0].src}
+          alt={showcase[0].alt}
+          width={1600}
+          height={1066}
           class="shadow-ink-lg aspect-[4/5] w-full rounded-[2rem] object-cover"
         />
       </figure>
       <figure class="col-span-4 -mb-12 translate-y-6">
         <Image
-          src={imgB}
-          alt="Élèves du fondamental de l'Institution Le Saint Justien"
+          src={showcase[1].src}
+          alt={showcase[1].alt}
+          width={1600}
+          height={1066}
           class="shadow-ink-lg aspect-[3/4] w-full rounded-[2rem] object-cover"
         />
       </figure>
       <figure class="col-span-4">
         <Image
-          src={imgC}
-          alt="Élèves de l'Institution Le Saint Justien devant l'établissement"
+          src={showcase[2].src}
+          alt={showcase[2].alt}
+          width={1600}
+          height={1066}
           class="shadow-ink-lg aspect-[5/6] w-full rounded-[2rem] object-cover"
         />
       </figure>
     </div>
   </div>
 
-  <div class="relative mt-12 md:hidden">
+  <div class="relative mt-10 md:hidden">
     <Image
-      src={imgA}
-      alt="Élèves du préscolaire de l'Institution Le Saint Justien"
+      src={showcase[0].src}
+      alt={showcase[0].alt}
+      width={1600}
+      height={1066}
       class="shadow-ink-lg aspect-[4/5] w-full rounded-[2rem] object-cover"
     />
   </div>

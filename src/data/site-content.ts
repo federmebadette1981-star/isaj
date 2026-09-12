@@ -73,13 +73,16 @@ export const schoolLevels = [
 ] as const;
 
 export const institutionalFacts = {
-  intro:
-    "Institution Le Saint Justien (ISAJ) est un établissement scolaire privé situé à Bon-Repos, Croix-des-Bouquets, Haïti.",
-  introSecond:
-    "Depuis son ouverture en septembre 2011, l'établissement œuvre pour offrir aux enfants et aux jeunes une éducation accessible et de qualité, fondée sur l'excellence académique, la discipline, les valeurs humaines, le civisme et l'égalité des chances.",
-  introThird: "L'ISAJ accueille environ 250 élèves, du préscolaire au secondaire.",
+  /**
+   * Accroche de la page d'accueil — volontairement courte : les chiffres clés
+   * (2011, ≈250 élèves, niveaux, Bon-Repos) sont repris juste en dessous dans
+   * la bande de statistiques, inutile de les répéter en toutes lettres.
+   */
+  heroIntro:
+    "Établissement scolaire privé à Bon-Repos, Croix-des-Bouquets. Depuis 2011, l'ISAJ accompagne près de 250 élèves du préscolaire au secondaire, dans un cadre fondé sur l'excellence académique, la discipline et le civisme.",
+  /** Présentation complète — page « À propos ». */
   whoWeAre:
-    "Institution Le Saint Justien (ISAJ) est un établissement scolaire privé situé à Bon-Repos, Croix-des-Bouquets. Depuis son ouverture en septembre 2011, l'ISAJ offre aux enfants et aux jeunes une éducation accessible et de qualité, du préscolaire au secondaire.",
+    "Institution Le Saint Justien (ISAJ) est un établissement scolaire privé situé à Bon-Repos, Croix-des-Bouquets, Haïti. Depuis son ouverture en septembre 2011, l'établissement œuvre pour offrir aux enfants et aux jeunes une éducation accessible et de qualité, fondée sur l'excellence académique, la discipline, les valeurs humaines, le civisme et l'égalité des chances. L'ISAJ accueille environ 250 élèves, du préscolaire au secondaire.",
   history: [
     "Institution Le Saint Justien (ISAJ) est née d'une volonté de contribuer durablement à l'éducation des enfants et des jeunes de la communauté de Bon-Repos, dans la commune de Croix-des-Bouquets.",
     "Fondée sous l'impulsion de Monsieur Osnel Saint-Juste, Directeur Fondateur, avec la participation de Monsieur Federme Badette comme Cofondateur, l'institution a officiellement ouvert ses portes en septembre 2011.",

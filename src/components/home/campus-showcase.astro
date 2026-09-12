@@ -1,29 +1,24 @@
 ---
 import { Image } from "astro:assets";
 import { MapPin } from "lucide-react";
+import { photos } from "../../data/photos";
 import { schoolIdentity } from "../../data/site-content";
 
 const facilities = [
   {
-    title: "Notre établissement",
-    desc: "Les locaux de l'ISAJ à Bon-Repos, Croix-des-Bouquets.",
-    image: "/isaj-1.jpeg",
-    tag: "Établissement",
-    alt: "Bâtiment de l'Institution Le Saint Justien à Bon-Repos",
+    ...photos.entree,
+    desc: "L'Institution Le Saint Justien, 5 Impasse Bernard, à Bon-Repos.",
+    tag: "Notre établissement",
   },
   {
-    title: "Vie en classe",
-    desc: "Le travail quotidien des élèves en salle de classe.",
-    image: "/isaj-2.jpeg",
+    ...photos.lecon,
+    desc: "Les apprentissages au quotidien, du préscolaire au secondaire.",
     tag: "Vie en classe",
-    alt: "Élèves de l'ISAJ en salle de classe",
   },
   {
-    title: "Activités scolaires",
-    desc: "Les moments de vie scolaire qui rythment l'année.",
-    image: "/isaj-3.jpeg",
-    tag: "Activités",
-    alt: "Activité scolaire à l'Institution Le Saint Justien",
+    ...photos.fanfare,
+    desc: "La fanfare, les rassemblements et la vie de l'école.",
+    tag: "Activités scolaires",
   },
 ];
 ---
@@ -78,7 +73,7 @@ const facilities = [
               class={`group relative overflow-hidden rounded-[1.75rem] ${layouts[index]}`}
             >
               <Image
-                src={item.image}
+                src={item.src}
                 alt={item.alt}
                 width={1200}
                 height={900}

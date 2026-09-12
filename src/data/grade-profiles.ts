@@ -1,3 +1,5 @@
+import type { PhotoKey } from "./photos";
+
 /**
  * Profils des trois sections de l'ISAJ.
  * Chaque section présente un contenu qui lui est propre :
@@ -52,7 +54,12 @@ export const gradeProfiles = [
     ],
     admissions:
       "La demande de préinscription au préscolaire se fait en ligne. Le secrétariat recontacte ensuite la famille pour communiquer les pièces requises, les modalités et les prochaines étapes.",
-    gallery: ["/isaj-1.jpeg", "/isaj-3.jpeg"],
+    gallery: [
+      "prescolaireGroupe",
+      "leconEleves",
+      "lecon",
+      "bricolage",
+    ] as const,
   },
   {
     id: "fondamental",
@@ -102,7 +109,12 @@ export const gradeProfiles = [
     ],
     admissions:
       "La demande de préinscription en section fondamentale se fait en ligne. Le secrétariat précise ensuite le niveau d'entrée, les pièces à fournir et les modalités applicables.",
-    gallery: ["/isaj-2.jpeg", "/isaj-4.jpeg"],
+    gallery: [
+      "fondamentalGroupe",
+      "fondamentalClasse",
+      "fondamentalGroupe2",
+      "rassemblementRangs",
+    ] as const,
   },
   {
     id: "secondaire",
@@ -149,8 +161,16 @@ export const gradeProfiles = [
     ],
     admissions:
       "La demande de préinscription au secondaire se fait en ligne. Le secrétariat communique ensuite le dossier à constituer et les modalités d'admission applicables.",
-    gallery: ["/isaj-3.jpeg", "/isaj-2.jpeg"],
+    gallery: [
+      "secondaireGroupe",
+      "classeSecondaire",
+      "drapeau",
+      "secondaireLigne2",
+    ] as const,
   },
 ] as const;
 
 export type GradeProfile = (typeof gradeProfiles)[number];
+
+/** Les clés de `gallery` renvoient au catalogue photographique. */
+export type GradeGalleryKey = PhotoKey;

@@ -1,31 +1,32 @@
 ---
 import { ArrowUpRight } from "lucide-react";
+import { photos } from "../../data/photos";
 import { institutionalFacts } from "../../data/site-content";
 
 const cards = [
   {
-    title: "Compétences de vie",
-    subtitle: "Confiance · Autonomie · Collaboration",
-    image: "/cround.jpeg",
+    title: "Les premiers apprentissages",
+    subtitle: "Éveil · Langage · Autonomie",
+    image: photos.leconEleves.src,
+    alt: photos.leconEleves.alt,
     number: "01",
     href: "/grade/prescolaire",
-    alt: "Élèves de l'ISAJ pendant une activité de groupe",
   },
   {
-    title: "L'imagination, un pouvoir",
-    subtitle: "Créativité · Curiosité · Expression",
-    image: "/isaj-4.jpeg",
+    title: "Des bases solides",
+    subtitle: "Lecture · Raisonnement · Méthode",
+    image: photos.fondamentalClasse.src,
+    alt: photos.fondamentalClasse.alt,
     number: "02",
     href: "/grade/fondamental",
-    alt: "Travail en classe à l'Institution Le Saint Justien",
   },
   {
     title: "Déployer ses propres ailes",
     subtitle: "Excellence · Persévérance · Caractère",
-    image: "/isaj-3.jpeg",
+    image: photos.secondaireGroupe.src,
+    alt: photos.secondaireGroupe.alt,
     number: "03",
     href: "/grade/secondaire",
-    alt: "Élèves du secondaire de l'Institution Le Saint Justien",
   },
 ];
 ---

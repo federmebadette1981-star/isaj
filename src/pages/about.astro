@@ -10,6 +10,7 @@ import {
   Users,
 } from "lucide-react";
 import Layout from "../layouts/Layout.astro";
+import { photos } from "../data/photos";
 import {
   academicResults,
   community,
@@ -124,6 +125,17 @@ const facts = [
               </p>
             ))
           }
+          <figure class="overflow-hidden rounded-[1.75rem] pt-4">
+            <img
+              src={photos.logoMural.src}
+              alt={photos.logoMural.alt}
+              loading="lazy"
+              class="h-64 w-full rounded-[1.75rem] object-cover sm:h-80 md:h-[26rem]"
+            />
+            <figcaption class="text-ink-mute mt-3 text-[0.85rem]">
+              {photos.logoMural.title} — {schoolIdentity.location}.
+            </figcaption>
+          </figure>
         </div>
       </div>
     </div>
@@ -308,6 +320,17 @@ const facts = [
             </p>
           ))
         }
+        <figure class="pt-2">
+          <img
+            src={photos.rassemblement.src}
+            alt={photos.rassemblement.alt}
+            loading="lazy"
+            class="h-64 w-full rounded-[1.75rem] object-cover sm:h-80 md:h-[26rem]"
+          />
+          <figcaption class="text-ink-mute mt-3 text-[0.85rem]">
+            {photos.rassemblement.title}.
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
