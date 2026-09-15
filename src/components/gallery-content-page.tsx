@@ -93,18 +93,19 @@ const GalleryContentPage = ({ items }: Props) => {
       <div className="mt-10 mb-12 grid grid-cols-1 items-end gap-8 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-8">
           <p className="text-ink-mute mb-4 text-[0.72rem] tracking-[0.22em] uppercase">
-            Galerie · {items.length} photographies
+            {items.length} photographies
           </p>
           <h1 className="tracking-headline balance text-ink text-[2rem] leading-[1.02] font-semibold sm:text-5xl md:text-[5.5rem]">
-            L'ISAJ en{" "}
+            Galerie de{" "}
             <span className="font-display text-brand-deep font-normal italic">
-              images.
+              l'ISAJ
             </span>
           </h1>
         </div>
         <p className="pretty text-ink-mute max-w-md text-[1rem] leading-relaxed lg:col-span-4">
-          L'établissement, la vie en classe, nos élèves, notre équipe éducative,
-          les activités et les événements de l'Institution Le Saint Justien.
+          Découvrez en images la vie de l'Institution Le Saint Justien, son
+          environnement scolaire, ses élèves, son équipe éducative, ses activités
+          et ses initiatives.
         </p>
       </div>
 

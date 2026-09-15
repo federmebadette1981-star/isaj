@@ -69,7 +69,8 @@ export type PhotoCategory =
   | "Nos élèves"
   | "Notre équipe éducative"
   | "Activités scolaires"
-  | "Événements et cérémonies";
+  | "Événements"
+  | "Projets et initiatives";
 
 export const photoCategories: PhotoCategory[] = [
   "Notre établissement",
@@ -77,7 +78,11 @@ export const photoCategories: PhotoCategory[] = [
   "Nos élèves",
   "Notre équipe éducative",
   "Activités scolaires",
-  "Événements et cérémonies",
+  "Événements",
+  // Aucune photo pour l'instant : les projets de l'ISAJ sont en développement et
+  // aucune image ne peut les illustrer sans laisser croire qu'ils sont réalisés.
+  // La catégorie s'affichera d'elle-même dans la galerie dès qu'une photo y sera classée.
+  "Projets et initiatives",
 ];
 
 export const photos = {
@@ -115,7 +120,7 @@ export const photos = {
   },
   courPleine: {
     image: courPleineImg,
-    title: "Un jour de classe",
+    title: "Dans la cour de l'école",
     alt: "Élèves de l'ISAJ rassemblés dans la cour de l'établissement",
     category: "Notre établissement",
   },
@@ -129,14 +134,14 @@ export const photos = {
   },
   leconEleves: {
     image: leconElevesImg,
-    title: "Découvrir le monde",
-    alt: "Enfants du préscolaire assis en cercle autour d'une table d'observation du maïs",
+    title: "Une leçon sur le maïs",
+    alt: "Enfants du préscolaire assis en cercle autour d'une table où sont disposés des épis de maïs",
     category: "Vie en classe",
   },
   leconDetail: {
     image: leconDetailImg,
-    title: "Le matériel de la leçon",
-    alt: "Épis de maïs, grains et farine disposés sur une table pour une leçon",
+    title: "Le maïs, sujet de la leçon",
+    alt: "Épis de maïs, grains et farine disposés sur une table de classe",
     category: "Vie en classe",
   },
   classeSecondaire: {
@@ -191,8 +196,8 @@ export const photos = {
   },
   fondamentalGroupe2: {
     image: fondamentalGroupe2Img,
-    title: "Les plus jeunes du fondamental",
-    alt: "Jeunes élèves du fondamental de l'ISAJ en uniforme, souriant",
+    title: "Des élèves du fondamental",
+    alt: "Élèves du fondamental de l'ISAJ en uniforme, souriant",
     category: "Nos élèves",
   },
   secondaireGroupe: {
@@ -209,7 +214,7 @@ export const photos = {
   },
   secondaireLigne2: {
     image: secondaireLigne2Img,
-    title: "Les finissants du secondaire",
+    title: "Des élèves du secondaire",
     alt: "Élèves du secondaire de l'ISAJ en uniforme, alignés devant l'établissement",
     category: "Nos élèves",
   },
@@ -221,7 +226,7 @@ export const photos = {
   },
   secondaireArchive: {
     image: secondaireArchiveImg,
-    title: "Une promotion du secondaire",
+    title: "Un groupe du secondaire",
     alt: "Groupe d'élèves du secondaire de l'ISAJ devant l'établissement",
     category: "Nos élèves",
   },
@@ -229,20 +234,20 @@ export const photos = {
   /* ---------- Notre équipe éducative ---------- */
   equipe: {
     image: equipeImg,
-    title: "L'équipe de l'établissement",
-    alt: "Cinq membres de l'équipe éducative et administrative de l'ISAJ devant l'école",
+    title: "Membres de l'équipe de l'ISAJ",
+    alt: "Cinq membres de l'équipe de l'ISAJ devant l'établissement",
     category: "Notre équipe éducative",
   },
   enseignantes: {
     image: enseignantesImg,
-    title: "L'équipe enseignante",
-    alt: "Cinq enseignantes de l'ISAJ devant la fresque de l'établissement",
+    title: "Membres de l'équipe éducative",
+    alt: "Cinq membres de l'équipe éducative de l'ISAJ devant la fresque de l'établissement",
     category: "Notre équipe éducative",
   },
   direction: {
     image: directionImg,
-    title: "Le secrétariat et la direction",
-    alt: "Deux responsables de l'ISAJ devant la fresque de l'établissement",
+    title: "Membres de l'équipe de l'ISAJ",
+    alt: "Deux membres de l'équipe de l'ISAJ devant la fresque de l'établissement",
     category: "Notre équipe éducative",
   },
 
@@ -267,20 +272,20 @@ export const photos = {
   },
   fanfareDefile: {
     image: fanfareDefileImg,
-    title: "La fanfare en répétition",
+    title: "Élèves et instruments à vent",
     alt: "Élèves de l'ISAJ portant leurs instruments à vent dans l'allée de l'école",
     category: "Activités scolaires",
   },
   rassemblement: {
     image: rassemblementImg,
-    title: "Le rassemblement du matin",
-    alt: "Ensemble des élèves de l'ISAJ rassemblés dans la cour au début de la journée",
+    title: "Le rassemblement des élèves",
+    alt: "Ensemble des élèves de l'ISAJ rassemblés dans la cour de l'établissement",
     category: "Activités scolaires",
   },
   rassemblementDirection: {
     image: rassemblementDirectionImg,
-    title: "La parole à la direction",
-    alt: "Un responsable de l'ISAJ s'adressant aux élèves rassemblés dans la cour",
+    title: "Rassemblement dans la cour",
+    alt: "Un adulte s'adressant aux élèves de l'ISAJ rassemblés dans la cour",
     category: "Activités scolaires",
   },
   rassemblementRangs: {
@@ -291,59 +296,59 @@ export const photos = {
   },
   recreation: {
     image: recreationImg,
-    title: "La récréation",
-    alt: "Élèves de l'ISAJ jouant dans la cour pendant la récréation",
+    title: "Élèves dans la cour",
+    alt: "Élèves de l'ISAJ dans la cour, en présence d'une enseignante",
     category: "Activités scolaires",
   },
   recreation2: {
     image: recreation2Img,
-    title: "Entre deux cours",
+    title: "Dans la cour de l'école",
     alt: "Élèves de l'ISAJ et une enseignante dans la cour de l'école",
     category: "Activités scolaires",
   },
 
-  /* ---------- Événements et cérémonies ---------- */
+  /* ---------- Événements ---------- */
   graduationCeremonie: {
     image: graduationCeremonieImg,
-    title: "La cérémonie de fin d'année",
-    alt: "Enfants du préscolaire en tenue jaune, médaille au cou, assis lors de la cérémonie de fin d'année",
-    category: "Événements et cérémonies",
+    title: "Une cérémonie à l'ISAJ",
+    alt: "Enfants en tenue jaune, médaille au cou, assis sous un chapiteau décoré d'une banderole « Nous sommes la lumière »",
+    category: "Événements",
   },
   graduationPortrait: {
     image: graduationPortraitImg,
     title: "Le jour de la graduation",
     alt: "Élève du préscolaire en toge et coiffe de graduation",
-    category: "Événements et cérémonies",
+    category: "Événements",
   },
   graduationSourire: {
     image: graduationSourireImg,
-    title: "Fière de son parcours",
+    title: "En toge de graduation",
     alt: "Élève du préscolaire souriante, en toge blanche et étole jaune",
-    category: "Événements et cérémonies",
+    category: "Événements",
   },
   graduationDrapeau: {
     image: graduationDrapeauImg,
     title: "Graduation et drapeau",
     alt: "Élève en toge de graduation devant le drapeau haïtien tenu par un camarade",
-    category: "Événements et cérémonies",
+    category: "Événements",
   },
   graduationRang: {
     image: graduationRangImg,
-    title: "En rang pour la cérémonie",
+    title: "En rang, en toge de graduation",
     alt: "File d'élèves du préscolaire en toge et coiffe de graduation",
-    category: "Événements et cérémonies",
+    category: "Événements",
   },
   graduationGroupe: {
     image: graduationGroupeImg,
-    title: "Les diplômés du préscolaire",
-    alt: "Quatre élèves du préscolaire en toge de graduation",
-    category: "Événements et cérémonies",
+    title: "Élèves en toge de graduation",
+    alt: "Quatre élèves du préscolaire en toge et coiffe de graduation",
+    category: "Événements",
   },
   graduationDuo: {
     image: graduationDuoImg,
-    title: "Prêts pour la suite",
-    alt: "Deux élèves du préscolaire en toge de graduation se tenant la main",
-    category: "Événements et cérémonies",
+    title: "Deux élèves en toge",
+    alt: "Deux élèves du préscolaire en toge de graduation, côte à côte",
+    category: "Événements",
   },
 } as const satisfies Record<string, Photo>;
 

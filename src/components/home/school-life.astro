@@ -4,29 +4,30 @@ import { ArrowUpRight } from "lucide-react";
 import { photos } from "../../data/photos";
 
 /**
- * « La vie à l'ISAJ » — ce que les élèves vivent chaque jour, au-delà des cours :
- * le rassemblement du matin, la levée du drapeau, la fanfare et la récréation.
+ * « La vie à l'ISAJ » — au-delà des cours : la levée du drapeau, le rassemblement,
+ * la fanfare et la vie dans la cour. Les textes décrivent ce que montrent les
+ * photos, sans fréquence ni horaire supposés.
  */
 const moments = [
   {
     ...photos.drapeau,
     label: "Civisme",
-    text: "Chaque semaine, les élèves hissent le drapeau haïtien dans la cour de l'école.",
+    text: "Les élèves hissent le drapeau haïtien dans la cour de l'école.",
   },
   {
     ...photos.rassemblement,
     label: "Discipline",
-    text: "La journée commence par un rassemblement de tout l'établissement.",
+    text: "Les élèves de toutes les sections se rassemblent dans la cour de l'établissement.",
   },
   {
     ...photos.fanfare,
     label: "Musique",
-    text: "La fanfare accompagne les rassemblements et les cérémonies de l'école.",
+    text: "Les élèves de l'ISAJ jouent des instruments à vent au sein de la fanfare de l'école.",
   },
   {
     ...photos.recreation,
     label: "Vie scolaire",
-    text: "La récréation, les jeux et les moments partagés entre les cours.",
+    text: "Les moments partagés dans la cour, entre élèves et avec l'équipe éducative.",
   },
 ];
 ---

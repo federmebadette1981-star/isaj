@@ -19,9 +19,8 @@ export const gradeProfiles = [
     overview:
       "Le préscolaire accompagne les jeunes enfants dans leurs premiers apprentissages et favorise leur développement intellectuel, social, émotionnel et moteur.",
     classes: [
-      "Petite section",
-      "Moyenne section",
-      "Grande section",
+      "Classes du préscolaire",
+      "Préparation à l'entrée dans l'enseignement fondamental",
     ],
     objectives: [
       "Éveiller le langage, l'écoute et l'expression orale",
@@ -32,24 +31,24 @@ export const gradeProfiles = [
     ],
     subjects: [
       "Langage et communication",
-      "Premiers apprentissages (pré-lecture, pré-écriture, pré-mathématiques)",
+      "Premiers apprentissages",
       "Découverte du monde",
       "Expression artistique",
-      "Activités motrices et jeux éducatifs",
-      "Vie en groupe et hygiène",
+      "Activités motrices",
+      "Vie en groupe",
     ],
     approach: [
       {
-        label: "Apprendre par le jeu",
-        text: "Les apprentissages passent par la manipulation, l'observation et le jeu structuré, adaptés au rythme de chaque enfant.",
+        label: "Apprendre en découvrant",
+        text: "Les apprentissages s'appuient sur l'observation, la manipulation et l'activité, comme lors des leçons de découverte du monde.",
       },
       {
-        label: "Un cadre rassurant",
-        text: "Des repères quotidiens stables et un accompagnement attentif permettent à l'enfant de se sentir en sécurité pour apprendre.",
+        label: "Un développement complet",
+        text: "L'accompagnement vise le développement intellectuel, social, émotionnel et moteur de chaque enfant.",
       },
       {
-        label: "Un lien étroit avec la famille",
-        text: "La responsable du préscolaire et l'enseignante restent en dialogue régulier avec les parents sur les progrès de l'enfant.",
+        label: "Grandir ensemble",
+        text: "Les enfants construisent progressivement leur autonomie et apprennent à vivre en groupe, dans le respect des autres.",
       },
     ],
     admissions:
@@ -84,14 +83,12 @@ export const gradeProfiles = [
       "Préparer les élèves de 9e année aux examens officiels",
     ],
     subjects: [
-      "Français",
-      "Créole",
+      "Lecture et écriture",
       "Mathématiques",
-      "Sciences expérimentales",
-      "Sciences sociales, histoire et géographie",
-      "Langues vivantes",
-      "Éducation citoyenne et morale",
-      "Expression artistique et éducation physique",
+      "Sciences",
+      "Langues",
+      "Sciences sociales",
+      "Éducation citoyenne",
     ],
     approach: [
       {
@@ -99,12 +96,12 @@ export const gradeProfiles = [
         text: "Le travail quotidien met l'accent sur la maîtrise progressive des savoirs fondamentaux avant d'aborder des contenus plus complexes.",
       },
       {
-        label: "Discipline et régularité",
-        text: "Le suivi des devoirs, l'assiduité et le comportement font l'objet d'une attention constante des enseignants et du censeur.",
+        label: "Discipline et responsabilité",
+        text: "La discipline, le respect et le sens des responsabilités, valeurs de l'établissement, accompagnent les apprentissages au quotidien.",
       },
       {
-        label: "Un suivi individuel",
-        text: "Le responsable académique et les enseignants identifient les difficultés en cours d'année afin d'accompagner chaque élève.",
+        label: "Préparer les examens officiels",
+        text: "L'établissement accorde une attention particulière à la préparation des élèves de 9e année fondamentale aux examens officiels.",
       },
     ],
     admissions:
@@ -126,8 +123,8 @@ export const gradeProfiles = [
     overview:
       "Le secondaire accompagne les élèves vers une formation académique plus approfondie et les prépare notamment aux examens officiels, aux études supérieures, à la formation professionnelle et à leur future intégration dans la société.",
     classes: [
-      "Niveaux du secondaire, jusqu'à la classe terminale",
-      "Préparation aux examens officiels du secondaire",
+      "Classes du secondaire",
+      "Préparation aux examens officiels",
     ],
     objectives: [
       "Approfondir les connaissances disciplinaires et l'analyse",
@@ -139,24 +136,23 @@ export const gradeProfiles = [
     subjects: [
       "Français et littérature",
       "Mathématiques",
-      "Sciences physiques, chimie et sciences de la vie",
-      "Histoire, géographie et éducation à la citoyenneté",
-      "Langues vivantes",
-      "Philosophie et sciences économiques et sociales",
-      "Informatique et éducation physique",
+      "Sciences",
+      "Langues",
+      "Sciences sociales",
+      "Éducation citoyenne",
     ],
     approach: [
       {
         label: "Exigence académique",
-        text: "Les évaluations régulières et les séances de préparation visent directement les attendus des examens officiels.",
+        text: "La section secondaire vise une formation académique approfondie et accorde une attention particulière à la préparation des examens officiels.",
       },
       {
         label: "Autonomie et responsabilité",
-        text: "Les élèves sont encouragés à organiser leur travail, à s'engager dans la vie de l'établissement et à prendre des initiatives.",
+        text: "L'ISAJ forme des jeunes instruits, responsables, autonomes et engagés dans le développement de leur communauté.",
       },
       {
-        label: "Orientation",
-        text: "L'équipe accompagne les élèves dans la réflexion sur leurs études supérieures et leur future insertion professionnelle.",
+        label: "Préparer la suite",
+        text: "Le secondaire prépare les élèves aux études supérieures, à la formation professionnelle et à leur future intégration dans la société.",
       },
     ],
     admissions:

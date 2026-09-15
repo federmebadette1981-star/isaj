@@ -20,6 +20,10 @@ const forbidden = [
       /(?:à\s+confirmer|à\s+venir|bient[oô]t\s+disponible|seront?\s+(?:publi|ajout|complét)|informations?\s+à\s+compl[ée]ter|source\s+officielle)/gi,
   },
   {
+    label: "generic photo caption (« Photographie de l'ISAJ »)",
+    pattern: /photographie\s+(?:locale\s+)?de\s+l['’]isaj/gi,
+  },
+  {
     label: "Gmail draft workflow",
     pattern: /brouillon\s+gmail|mail\.google\.com/gi,
   },
