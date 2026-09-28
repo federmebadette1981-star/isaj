@@ -1,42 +1,56 @@
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const links = [
-  { href: "/", label: "Accueil", match: (p: string) => p === "/" },
+type NavLink = {
+  href: string;
+  label: string;
+  match: (path: string) => boolean;
+  /** Mis en avant : l'appel au soutien, distinct des autres rubriques. */
+  highlight?: boolean;
+};
+
+const links: NavLink[] = [
+  { href: "/", label: "Accueil", match: (p) => p === "/" },
   {
     href: "/about",
     label: "À propos",
-    match: (p: string) => p.startsWith("/about"),
+    match: (p) => p.startsWith("/about"),
   },
   {
     href: "/curriculum",
     label: "Programme",
-    match: (p: string) => p.startsWith("/curriculum") || p.startsWith("/grade"),
+    match: (p) => p.startsWith("/curriculum") || p.startsWith("/grade"),
   },
   {
     href: "/projects",
     label: "Projets",
-    match: (p: string) => p.startsWith("/projects"),
+    match: (p) => p.startsWith("/projects"),
   },
   {
     href: "/gallery",
     label: "Galerie",
-    match: (p: string) => p.startsWith("/gallery"),
+    match: (p) => p.startsWith("/gallery"),
   },
   {
     href: "/teams",
     label: "Équipe",
-    match: (p: string) => p.startsWith("/teams"),
+    match: (p) => p.startsWith("/teams"),
+  },
+  {
+    href: "/soutenir",
+    label: "Soutenir l'ISAJ",
+    match: (p) => p.startsWith("/soutenir"),
+    highlight: true,
   },
   {
     href: "/partnership",
     label: "Partenariat",
-    match: (p: string) => p.startsWith("/partnership"),
+    match: (p) => p.startsWith("/partnership"),
   },
   {
     href: "/contact",
     label: "Contact",
-    match: (p: string) => p.startsWith("/contact"),
+    match: (p) => p.startsWith("/contact"),
   },
 ];
 
@@ -76,7 +90,7 @@ const Navbar = () => {
             </span>
           </a>
 
-          <div className="hidden items-center gap-0.5 lg:flex">
+          <div className="hidden items-center gap-0.5 xl:flex">
             {links.map((l) => {
               const active = l.match(path);
               return (
@@ -84,9 +98,11 @@ const Navbar = () => {
                   key={l.href}
                   href={l.href}
                   className={`group relative rounded-full px-3 py-2 text-[0.88rem] font-medium transition-colors ${
-                    active
-                      ? "text-[var(--color-ink)]"
-                      : "text-[var(--color-ink-mute)] hover:text-[var(--color-ink)]"
+                    l.highlight
+                      ? "text-[var(--color-brand-deep)] hover:text-[var(--color-brand)]"
+                      : active
+                        ? "text-[var(--color-ink)]"
+                        : "text-[var(--color-ink-mute)] hover:text-[var(--color-ink)]"
                   }`}
                 >
                   {l.label}
@@ -102,7 +118,7 @@ const Navbar = () => {
             })}
           </div>
 
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <a
               href="/enrollment"
               className="group inline-flex items-center gap-1.5 rounded-full bg-[var(--color-ink)] px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-[var(--color-ink-soft)] active:scale-[0.97]"
@@ -115,7 +131,7 @@ const Navbar = () => {
             </a>
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-2 xl:hidden">
             <a
               href="/enrollment"
               className="inline-flex min-h-11 items-center rounded-full bg-[var(--color-ink)] px-4 text-xs font-medium text-white"
@@ -135,7 +151,7 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="lg:hidden">
+        <div className="xl:hidden">
           <div className="shadow-ink mx-4 mb-4 max-h-[70vh] overflow-y-auto rounded-3xl border border-black/[0.06] bg-white/95 p-3 backdrop-blur-xl">
             {links.map((l) => {
               const active = l.match(path);
@@ -145,7 +161,7 @@ const Navbar = () => {
                   href={l.href}
                   onClick={() => setIsOpen(false)}
                   className={`flex min-h-12 items-center justify-between rounded-2xl px-4 py-3 text-base font-medium transition-colors ${
-                    active
+                    active || l.highlight
                       ? "bg-[var(--color-brand-soft)] text-[var(--color-brand-deep)]"
                       : "text-[var(--color-ink)] hover:bg-black/[0.03]"
                   }`}

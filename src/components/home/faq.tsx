@@ -23,9 +23,9 @@ const faqs = [
       "L'établissement exerce ses activités éducatives dans le système scolaire haïtien et relève des autorités compétentes du Ministère de l'Éducation Nationale et de la Formation Professionnelle (MENFP). Il est rattaché à la Direction Départementale de l'Éducation de l'Ouest et au district scolaire de Croix-des-Bouquets.",
   },
   {
-    question: "Comment devenir partenaire ou soutenir un projet ?",
+    question: "Comment soutenir l'ISAJ ou devenir partenaire ?",
     answer:
-      "L'ISAJ développe des partenariats avec des fondations, ONG, établissements scolaires, entreprises, associations et donateurs. Écrivez-nous depuis la page Partenariat : les documents institutionnels et administratifs pertinents peuvent être mis à disposition dans le cadre d'une procédure de vérification.",
+      "Pour faire un don, proposer du matériel, offrir vos compétences ou soutenir un projet, utilisez la page Soutenir l'ISAJ. Pour une collaboration institutionnelle ou organisationnelle, consultez la page Partenariat.",
   },
 ];
 

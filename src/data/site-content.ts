@@ -14,8 +14,8 @@ export const schoolIdentity = {
     "5, Impasse Bernard, Bon-Repos, Croix-des-Bouquets, Route Nationale #1, Haïti",
   tagline: "Éduquer aujourd'hui, construire l'avenir.",
   signature: "Éducation • Discipline • Avenir",
-  enrollment: "≈ 250",
-  enrollmentLabel: "élèves",
+  /** Formulation unique de l'effectif, reprise partout sur le site. */
+  enrollment: "environ 250 élèves",
   levelsLabel: "Préscolaire • Fondamental • Secondaire",
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Institution+Le+Saint+Justien%2C+Impasse+Bernard%2C+Bon-Repos%2C+Croix-des-Bouquets%2C+Ha%C3%AFti",
@@ -39,7 +39,7 @@ export const contactDetails = {
 /** Chiffres clés — page d'accueil. */
 export const keyFigures = [
   { value: "2011", label: "Année d'ouverture" },
-  { value: "≈ 250", label: "Élèves" },
+  { value: "environ 250", label: "Élèves" },
   { value: "Préscolaire · Fondamental · Secondaire", label: "Niveaux d'enseignement" },
   { value: "Bon-Repos", label: "Communauté desservie" },
 ];
@@ -75,11 +75,11 @@ export const schoolLevels = [
 export const institutionalFacts = {
   /**
    * Accroche de la page d'accueil — volontairement courte : les chiffres clés
-   * (2011, ≈250 élèves, niveaux, Bon-Repos) sont repris juste en dessous dans
+   * (2011, environ 250 élèves, niveaux, Bon-Repos) sont repris juste en dessous dans
    * la bande de statistiques, inutile de les répéter en toutes lettres.
    */
   heroIntro:
-    "Établissement scolaire privé à Bon-Repos, Croix-des-Bouquets. Depuis 2011, l'ISAJ accompagne près de 250 élèves du préscolaire au secondaire, dans un cadre fondé sur l'excellence académique, la discipline et le civisme.",
+    "Établissement scolaire privé à Bon-Repos, Croix-des-Bouquets. Depuis 2011, l'ISAJ accompagne environ 250 élèves du préscolaire au secondaire, dans un cadre fondé sur l'excellence académique, la discipline et le civisme.",
   /** Présentation complète — page « À propos ». */
   whoWeAre:
     "Institution Le Saint Justien (ISAJ) est un établissement scolaire privé situé à Bon-Repos, Croix-des-Bouquets, Haïti. Depuis son ouverture en septembre 2011, l'établissement œuvre pour offrir aux enfants et aux jeunes une éducation accessible et de qualité, fondée sur l'excellence académique, la discipline, les valeurs humaines, le civisme et l'égalité des chances. L'ISAJ accueille environ 250 élèves, du préscolaire au secondaire.",
@@ -197,26 +197,31 @@ export const projects = {
   items: [
     {
       title: "Éducation numérique et informatique",
+      supportDomain: "Informatique et numérique",
       description:
         "L'ISAJ souhaite développer un laboratoire informatique permettant aux élèves et aux enseignants d'accéder aux outils numériques, aux ressources éducatives et à la formation informatique.",
     },
     {
       title: "Énergie solaire",
+      supportDomain: "Énergie et Internet",
       description:
         "L'établissement recherche des partenaires afin de renforcer son autonomie énergétique grâce à une solution solaire adaptée aux besoins de l'école et de ses futurs équipements numériques.",
     },
     {
       title: "Couture et formation pratique",
+      supportDomain: "Couture",
       description:
         "L'ISAJ souhaite développer un programme de couture permettant aux jeunes d'acquérir des compétences pratiques pouvant contribuer à leur autonomie future.",
     },
     {
       title: "Musique et éducation artistique",
+      supportDomain: "Musique et arts",
       description:
         "L'établissement souhaite permettre aux élèves de découvrir et pratiquer la musique grâce à l'acquisition d'instruments et au développement d'activités d'éducation musicale.",
     },
     {
       title: "Alimentation scolaire",
+      supportDomain: "Cantine scolaire",
       description:
         "L'ISAJ souhaite développer un programme de cantine scolaire afin de contribuer au bien-être, à l'assiduité et aux conditions d'apprentissage des élèves.",
     },
@@ -300,3 +305,100 @@ export const admissionSteps = [
 
 export const admissionNote =
   "Les pièces requises, les frais de scolarité et les modalités applicables sont communiqués directement par le secrétariat.";
+
+/* ------------------------------------------------------------------ */
+/*  Soutenir l'ISAJ                                                    */
+/* ------------------------------------------------------------------ */
+
+export const support = {
+  title: "Soutenir l'Institution Le Saint Justien",
+  paragraphs: [
+    "Chaque contribution peut aider l'Institution Le Saint Justien à renforcer les conditions d'apprentissage et à développer de nouvelles possibilités éducatives pour ses élèves.",
+    "Particuliers, anciens élèves, professionnels, entreprises, églises, associations, fondations et autres organisations peuvent soutenir l'ISAJ de différentes manières.",
+    "Vous pouvez proposer un soutien financier, du matériel ou des équipements, des fournitures scolaires, une expertise professionnelle, du bénévolat ou un partenariat.",
+  ],
+  waysTitle: "Comment nous aider ?",
+  ways: [
+    {
+      title: "Don financier",
+      description:
+        "Contribuer à un projet ou aux besoins prioritaires de l'établissement.",
+    },
+    {
+      title: "Don de matériel ou d'équipement",
+      description:
+        "Ordinateurs, fournitures, instruments de musique, machines à coudre, mobilier ou autres équipements utiles.",
+    },
+    {
+      title: "Bénévolat et expertise",
+      description:
+        "Mettre des compétences professionnelles ou techniques au service de l'école.",
+    },
+    {
+      title: "Partenariat",
+      description:
+        "Développer une collaboration avec l'ISAJ autour d'un projet éducatif ou institutionnel.",
+    },
+  ],
+  formTitle: "Proposition de soutien",
+  consent:
+    "J'accepte que l'Institution Le Saint Justien utilise les informations fournies pour me contacter au sujet de ma proposition de soutien.",
+  submitLabel: "Envoyer ma proposition de soutien",
+  confirmation:
+    "Merci pour votre volonté de soutenir l'Institution Le Saint Justien. Votre proposition a bien été reçue. L'équipe de l'ISAJ vous contactera afin de vous communiquer les prochaines étapes et les modalités appropriées.",
+  transparency: {
+    title: "Transparence",
+    text: "L'ISAJ accorde une importance particulière à la transparence et à la confiance dans ses relations avec ses donateurs et partenaires. Selon la nature du soutien ou du projet, l'établissement peut fournir des informations de suivi, notamment des nouvelles sur la mise en œuvre, des photographies appropriées, des rapports d'activités et des pièces justificatives pertinentes.",
+  },
+};
+
+/** Profils de soutien proposés dans le formulaire. */
+export const supporterProfiles = [
+  "Particulier",
+  "Professionnel",
+  "Entreprise",
+  "Église",
+  "Association",
+  "Fondation",
+  "ONG",
+  "Autre",
+];
+
+export const supportTypes = [
+  "Don financier",
+  "Matériel ou équipement",
+  "Fournitures scolaires",
+  "Services professionnels",
+  "Bénévolat",
+  "Partenariat",
+  "Autre",
+];
+
+/** Domaines : repris tels quels dans les boutons « Soutenir ce projet ». */
+export const supportDomains = [
+  "Cantine scolaire",
+  "Informatique et numérique",
+  "Couture",
+  "Musique et arts",
+  "Énergie et Internet",
+  "Matériel pédagogique",
+  "Soutien général à l'ISAJ",
+  "Autre",
+];
+
+export const volunteering = {
+  title: "Partager vos compétences",
+  intro:
+    "Vous souhaitez mettre votre temps ou vos compétences au service de l'éducation ? L'ISAJ est ouverte aux propositions de bénévolat et de collaboration professionnelle compatibles avec les besoins de l'établissement et la protection des élèves.",
+  participationTypes: ["À distance", "Sur place", "Selon les possibilités"],
+  submitLabel: "Proposer mon aide",
+  note: "Toute activité impliquant un contact avec des élèves reste soumise aux règles et validations de l'établissement.",
+  confirmation:
+    "Merci pour votre proposition. L'équipe de l'ISAJ vous contactera afin d'échanger sur les possibilités de collaboration.",
+};
+
+/** Appel au soutien affiché en bas de la page d'accueil. */
+export const supportCallout = {
+  title: "Ensemble, soutenons l'éducation.",
+  text: "Vous souhaitez contribuer aux projets et au développement de l'Institution Le Saint Justien ? Découvrez les différentes façons de nous soutenir.",
+};

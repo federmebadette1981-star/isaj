@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SupportPageContent from "../components/support-page-content";
+import { schoolIdentity } from "../data/site-content";
+---
+
+<Layout
+  title={`Soutenir l'ISAJ — ${schoolIdentity.name}`}
+  description="Soutenez l'Institution Le Saint Justien : don financier, matériel et équipements, bénévolat et expertise, ou partenariat au service des élèves de Bon-Repos."
+>
+  <SupportPageContent client:load />
+</Layout>

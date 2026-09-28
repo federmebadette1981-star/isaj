@@ -90,9 +90,21 @@ const items = projects.items.map((item, index) => ({
                   {projects.status}
                 </p>
               </div>
-              <p class="text-ink-mute text-[1rem] leading-[1.8] md:col-span-7">
-                {project.description}
-              </p>
+              <div class="md:col-span-7">
+                <p class="text-ink-mute text-[1rem] leading-[1.8]">
+                  {project.description}
+                </p>
+                <a
+                  href={`/soutenir?domaine=${encodeURIComponent(project.supportDomain)}#proposition`}
+                  class="group bg-ink hover:bg-ink-soft mt-7 inline-flex min-h-12 items-center gap-2 rounded-full px-6 text-[0.9rem] font-medium text-white transition-all active:scale-[0.98]"
+                >
+                  Soutenir ce projet
+                  <ArrowUpRight
+                    size={15}
+                    className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </a>
+              </div>
             </article>
           ))
         }
@@ -172,7 +184,7 @@ const items = projects.items.map((item, index) => ({
         </p>
         <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <a
-            href="/partnership"
+            href="/soutenir"
             class="group text-ink inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-white px-7 text-[0.95rem] font-medium transition-all hover:bg-white/90 active:scale-[0.98]"
             >Soutenir un projet <ArrowUpRight
               size={16}
