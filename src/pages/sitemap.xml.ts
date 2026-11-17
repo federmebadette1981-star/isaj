@@ -21,7 +21,7 @@ const pages: { path: string; priority: string }[] = [
 ];
 
 export const GET: APIRoute = ({ site }) => {
-  const base = site ?? new URL("https://isaj.pages.dev");
+  const base = site ?? new URL("https://isajhaiti.org");
   const lastmod = new Date().toISOString().slice(0, 10);
   const urls = pages
     .map(

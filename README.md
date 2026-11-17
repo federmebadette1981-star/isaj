@@ -54,7 +54,7 @@ redéployer.
 | :---------------------- | :------------------------------------------------------------------- |
 | `PUBLIC_WEB3FORMS_KEY`  | **Requis pour l'envoi réel des formulaires.** Clé d'accès gratuite obtenue sur [web3forms.com](https://web3forms.com) avec l'adresse officielle de l'école. |
 | `PUBLIC_FORM_ENDPOINT`  | Alternative : URL d'un autre service de formulaire (Formspree, etc.). Ignorée si `PUBLIC_WEB3FORMS_KEY` est définie. |
-| `PUBLIC_SITE_URL`       | Domaine du site, utilisé pour les URL canoniques et l'aperçu des liens (Open Graph). Défaut : `https://isaj.pages.dev`. À changer lors du passage au domaine officiel. |
+| `PUBLIC_SITE_URL`       | Domaine du site, utilisé pour les URL canoniques et l'aperçu des liens (Open Graph). Défaut : `https://isajhaiti.org` (domaine officiel). |
 
 ### Formulaires
 

@@ -43,7 +43,7 @@ const baseKeywords = [
 ];
 const allKeywords = [...new Set([...keywords, ...baseKeywords])].join(", ");
 
-const siteUrl = Astro.site ?? new URL("https://isaj.pages.dev");
+const siteUrl = Astro.site ?? new URL("https://isajhaiti.org");
 // Cloudflare Pages sert /about et redirige /about/ vers /about : l'URL
 // canonique doit être la forme finale, sans barre oblique (sauf l'accueil).
 const pathname =
