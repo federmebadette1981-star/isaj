@@ -3,6 +3,11 @@ import ContactPageContent from "../components/contact-page-content";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout>
+<Layout
+  title="Contact — ISAJ, école à Bon-Repos, Croix-des-Bouquets"
+  description="Contactez l'Institution Le Saint Justien : adresse au 5, Impasse Bernard, Bon-Repos, téléphones du secrétariat, e-mail et formulaire de contact en ligne."
+  keywords={["contact ISAJ", "adresse école Bon-Repos", "téléphone ISAJ"]}
+  breadcrumbs={[{ name: "Contact", path: "/contact" }]}
+>
   <ContactPageContent client:load />
 </Layout>

@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import GalleryContentPage from "../components/gallery-content-page";
 import { galleryPhotos } from "../data/photos";
 import { responsiveImage } from "../lib/images";
-import { schoolIdentity } from "../data/site-content";
 
 /**
  * Deux jeux de variantes par photo :
@@ -26,8 +25,10 @@ const items = await Promise.all(
 ---
 
 <Layout
-  title={`Galerie — ${schoolIdentity.name} (ISAJ)`}
-  description="Découvrez en images la vie de l'Institution Le Saint Justien, son environnement scolaire, ses élèves, son équipe éducative, ses activités et ses initiatives."
+  title="Galerie photos — La vie scolaire à l'ISAJ"
+  description="La vie de l'Institution Le Saint Justien en images : élèves, environnement scolaire, équipe éducative, activités et initiatives à Bon-Repos, Haïti."
+  keywords={["photos ISAJ", "vie scolaire", "élèves Haïti"]}
+  breadcrumbs={[{ name: "Galerie", path: "/gallery" }]}
 >
   <GalleryContentPage client:load items={items} />
 </Layout>

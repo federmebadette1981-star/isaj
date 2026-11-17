@@ -2,41 +2,120 @@
 import "../styles/global.css";
 import Footer from "./Footer.astro";
 import Navbar from "./navbar";
-import { officialEmail, schoolIdentity, contactDetails } from "../data/site-content";
+import {
+  officialEmail,
+  schoolIdentity,
+  contactDetails,
+} from "../data/site-content";
+
+type Breadcrumb = { name: string; path: string };
 
 interface Props {
+  /** Titre complet de l'onglet et des résultats Google (idéalement ≤ 60 caractères). */
   title?: string;
+  /** Extrait affiché sous le titre dans Google (idéalement 120 à 160 caractères). */
   description?: string;
   image?: string;
+  imageAlt?: string;
+  /** Mots-clés propres à la page, ajoutés aux mots-clés communs. */
+  keywords?: string[];
+  /** Fil d'Ariane (hors accueil) — génère le balisage BreadcrumbList. */
+  breadcrumbs?: Breadcrumb[];
+  noindex?: boolean;
 }
 
 const {
-  title = "Institution Le Saint Justien (ISAJ) | École à Bon-Repos, Haïti",
-  description = "Institution Le Saint Justien est un établissement scolaire situé à Bon-Repos, Croix-des-Bouquets, Haïti, offrant un enseignement du préscolaire au secondaire.",
+  title = "Institution Le Saint Justien (ISAJ) | École privée en Haïti",
+  description = "École privée à Bon-Repos, Croix-des-Bouquets (Haïti) depuis 2011 : préscolaire, fondamental et secondaire pour environ 250 élèves. Préinscription en ligne.",
   image = "/og-isaj.jpg",
+  imageAlt = "Entrée de l'Institution Le Saint Justien (ISAJ), Bon-Repos, Haïti",
+  keywords = [],
+  breadcrumbs = [],
+  noindex = false,
 } = Astro.props;
 
-const siteUrl = Astro.site ?? new URL("https://isaj.pages.dev");
-const canonical = new URL(Astro.url.pathname, siteUrl);
-const socialImage = new URL(image, siteUrl);
+const baseKeywords = [
+  "Institution Le Saint Justien",
+  "ISAJ",
+  "école Bon-Repos",
+  "école Croix-des-Bouquets",
+  "école privée Haïti",
+];
+const allKeywords = [...new Set([...keywords, ...baseKeywords])].join(", ");
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "School",
-  name: schoolIdentity.name,
-  alternateName: schoolIdentity.shortName,
-  description,
-  url: siteUrl.href,
-  email: officialEmail,
-  telephone: contactDetails.phones.map((phone) => phone.display),
-  foundingDate: "2011-09",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "5, Impasse Bernard, Route Nationale #1",
-    addressLocality: "Bon-Repos, Croix-des-Bouquets",
-    addressCountry: "HT",
+const siteUrl = Astro.site ?? new URL("https://isaj.pages.dev");
+// Cloudflare Pages sert /about et redirige /about/ vers /about : l'URL
+// canonique doit être la forme finale, sans barre oblique (sauf l'accueil).
+const pathname =
+  Astro.url.pathname.length > 1 ? Astro.url.pathname.replace(/\/+$/, "") : "/";
+const canonical = new URL(pathname, siteUrl);
+const socialImage = new URL(image, siteUrl);
+const schoolId = new URL("/#ecole", siteUrl).href;
+
+const graph: Record<string, unknown>[] = [
+  {
+    "@type": ["School", "EducationalOrganization"],
+    "@id": schoolId,
+    name: schoolIdentity.name,
+    alternateName: schoolIdentity.shortName,
+    description:
+      "Établissement scolaire privé à Bon-Repos, Croix-des-Bouquets, Haïti, ouvert en septembre 2011 : section préscolaire, section fondamentale et section secondaire.",
+    slogan: schoolIdentity.tagline,
+    url: siteUrl.href,
+    image: new URL("/og-isaj.jpg", siteUrl).href,
+    email: officialEmail,
+    telephone: contactDetails.phones[0].display,
+    contactPoint: contactDetails.phones.map((phone) => ({
+      "@type": "ContactPoint",
+      telephone: phone.display,
+      contactType: "secrétariat",
+      availableLanguage: "fr",
+    })),
+    foundingDate: "2011-09",
+    founder: [
+      {
+        "@type": "Person",
+        name: "Osnel Saint-Juste",
+        jobTitle: "Directeur Fondateur",
+      },
+      { "@type": "Person", name: "Federme Badette", jobTitle: "Cofondateur" },
+    ],
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "5, Impasse Bernard, Route Nationale #1",
+      addressLocality: "Bon-Repos, Croix-des-Bouquets",
+      addressRegion: "Ouest",
+      addressCountry: "HT",
+    },
+    hasMap: schoolIdentity.mapsUrl,
+    areaServed: { "@type": "Place", name: "Croix-des-Bouquets, Haïti" },
   },
-};
+  {
+    "@type": "WebSite",
+    "@id": new URL("/#site", siteUrl).href,
+    name: schoolIdentity.name,
+    alternateName: schoolIdentity.shortName,
+    url: siteUrl.href,
+    inLanguage: "fr",
+    publisher: { "@id": schoolId },
+  },
+];
+
+if (breadcrumbs.length > 0) {
+  graph.push({
+    "@type": "BreadcrumbList",
+    itemListElement: [{ name: "Accueil", path: "/" }, ...breadcrumbs].map(
+      (crumb, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: crumb.name,
+        item: new URL(crumb.path, siteUrl).href,
+      }),
+    ),
+  });
+}
+
+const structuredData = { "@context": "https://schema.org", "@graph": graph };
 ---
 
 <!doctype html>
@@ -48,7 +127,9 @@ const organizationSchema = {
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={allKeywords} />
     <link rel="canonical" href={canonical.href} />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
@@ -64,20 +145,23 @@ const organizationSchema = {
     <meta property="og:image" content={socialImage.href} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="Entrée de l'Institution Le Saint Justien (ISAJ), Bon-Repos, Haïti"
-    />
+    <meta property="og:image:alt" content={imageAlt} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage.href} />
+    <meta name="twitter:image:alt" content={imageAlt} />
 
-    <meta name="robots" content="index, follow" />
+    <meta
+      name="robots"
+      content={noindex
+        ? "noindex, follow"
+        : "index, follow, max-image-preview:large, max-snippet:-1"}
+    />
     <script
       type="application/ld+json"
-      set:html={JSON.stringify(organizationSchema)}
+      set:html={JSON.stringify(structuredData)}
     />
   </head>
   <body class="antialiased">

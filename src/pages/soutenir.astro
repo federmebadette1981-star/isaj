@@ -1,12 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SupportPageContent from "../components/support-page-content";
-import { schoolIdentity } from "../data/site-content";
 ---
 
 <Layout
-  title={`Soutenir l'ISAJ — ${schoolIdentity.name}`}
-  description="Soutenez l'Institution Le Saint Justien : don financier, matériel et équipements, bénévolat et expertise, ou partenariat au service des élèves de Bon-Repos."
+  title="Soutenir l'ISAJ — Don, matériel et bénévolat"
+  description="Soutenez les élèves de l'Institution Le Saint Justien à Bon-Repos, Haïti : don financier, matériel et équipements, bénévolat, expertise ou soutien d'un projet."
+  keywords={[
+    "faire un don école Haïti",
+    "bénévolat Haïti",
+    "soutenir une école",
+  ]}
+  breadcrumbs={[{ name: "Soutenir l'ISAJ", path: "/soutenir" }]}
 >
   <SupportPageContent client:load />
 </Layout>

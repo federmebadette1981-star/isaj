@@ -6,14 +6,19 @@ import {
   partnership,
   priorityNeeds,
   projects,
-  schoolIdentity,
   transparency,
 } from "../data/site-content";
 ---
 
 <Layout
-  title={`Partenariat — ${schoolIdentity.name} (ISAJ)`}
-  description="Devenir partenaire de l'Institution Le Saint Justien : domaines de collaboration, projets soutenus et documents institutionnels disponibles sur demande."
+  title="Devenir partenaire de l'ISAJ | École en Haïti"
+  description="Collaborez avec l'Institution Le Saint Justien : domaines de partenariat, projets en développement et documents institutionnels disponibles sur demande."
+  keywords={[
+    "partenariat école Haïti",
+    "ONG éducation Haïti",
+    "fondation éducation",
+  ]}
+  breadcrumbs={[{ name: "Partenariat", path: "/partnership" }]}
 >
   <section
     class="mx-auto max-w-7xl px-4 pt-12 pb-20 sm:px-6 lg:px-8 lg:pt-16 lg:pb-24"
@@ -42,7 +47,8 @@ import {
           class="tracking-headline balance text-ink text-[2rem] leading-[1.02] font-semibold sm:text-5xl md:text-[5rem]"
         >
           Devenir partenaire de <span
-            class="font-display text-brand-deep font-normal italic">l'ISAJ.</span
+            class="font-display text-brand-deep font-normal italic"
+            >l'ISAJ.</span
           >
         </h1>
       </div>
@@ -103,9 +109,7 @@ import {
         </ul>
       </div>
 
-      <div
-        class="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
-      >
+      <div class="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {
           projects.items.map((project) => (
             <article class="rounded-[1.5rem] border border-black/[0.06] bg-[var(--color-paper)] p-7 lg:p-8">

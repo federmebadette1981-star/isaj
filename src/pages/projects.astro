@@ -9,11 +9,7 @@ import {
   Sun,
 } from "lucide-react";
 import Layout from "../layouts/Layout.astro";
-import {
-  priorityNeeds,
-  projects,
-  schoolIdentity,
-} from "../data/site-content";
+import { priorityNeeds, projects } from "../data/site-content";
 
 const icons = [Cpu, Sun, Scissors, Music, HeartHandshake];
 const items = projects.items.map((item, index) => ({
@@ -23,8 +19,15 @@ const items = projects.items.map((item, index) => ({
 ---
 
 <Layout
-  title={`Nos projets — ${schoolIdentity.name} (ISAJ)`}
-  description="Les projets en développement de l'ISAJ : laboratoire informatique, énergie solaire, couture, musique et alimentation scolaire, ainsi que ses besoins prioritaires."
+  title="Projets en développement — ISAJ, Bon-Repos"
+  description="Les projets en développement de l'ISAJ : laboratoire informatique, énergie solaire, couture, musique et alimentation scolaire, et ses besoins prioritaires."
+  keywords={[
+    "projets école Haïti",
+    "laboratoire informatique",
+    "énergie solaire école",
+    "alimentation scolaire",
+  ]}
+  breadcrumbs={[{ name: "Projets", path: "/projects" }]}
 >
   <section
     class="mx-auto max-w-7xl px-4 pt-12 pb-20 sm:px-6 lg:px-8 lg:pt-16 lg:pb-24"

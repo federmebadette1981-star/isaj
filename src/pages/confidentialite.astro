@@ -1,7 +1,7 @@
 ---
 import { ArrowLeft } from "lucide-react";
 import Layout from "../layouts/Layout.astro";
-import { contactDetails, schoolIdentity } from "../data/site-content";
+import { contactDetails } from "../data/site-content";
 
 const sections = [
   {
@@ -50,8 +50,9 @@ const sections = [
 ---
 
 <Layout
-  title={`Politique de confidentialité — ${schoolIdentity.name} (ISAJ)`}
+  title="Politique de confidentialité | ISAJ"
   description="Comment l'Institution Le Saint Justien traite les informations transmises par les formulaires du site et les photographies des élèves."
+  breadcrumbs={[{ name: "Confidentialité", path: "/confidentialite" }]}
 >
   <section
     class="mx-auto max-w-3xl px-4 pt-12 pb-24 sm:px-6 lg:px-8 lg:pt-16 lg:pb-32"
@@ -67,7 +68,9 @@ const sections = [
       Retour à l'accueil
     </a>
 
-    <p class="text-ink-mute mt-10 mb-4 text-[0.72rem] tracking-[0.22em] uppercase">
+    <p
+      class="text-ink-mute mt-10 mb-4 text-[0.72rem] tracking-[0.22em] uppercase"
+    >
       Confidentialité
     </p>
     <h1
@@ -91,9 +94,7 @@ const sections = [
             <span class="tabular text-ink-mute text-[0.72rem]">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <h2
-              class="tracking-headline text-ink mt-3 text-[1.35rem] leading-tight font-semibold md:text-[1.75rem]"
-            >
+            <h2 class="tracking-headline text-ink mt-3 text-[1.35rem] leading-tight font-semibold md:text-[1.75rem]">
               {section.title}
             </h2>
             <div class="mt-5 space-y-4">

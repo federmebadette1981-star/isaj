@@ -3,6 +3,16 @@ import EnrollmentPageContent from "../components/enrollment-page-content";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout>
-  <EnrollmentPageContent client:load/>
+<Layout
+  title="Préinscription en ligne — ISAJ, école à Croix-des-Bouquets"
+  description="Préinscrivez votre enfant à l'ISAJ, du préscolaire au secondaire. Remplissez la demande en ligne : le secrétariat vous contacte pour les prochaines étapes."
+  keywords={[
+    "préinscription",
+    "inscription école Croix-des-Bouquets",
+    "admission ISAJ",
+    "inscrire mon enfant",
+  ]}
+  breadcrumbs={[{ name: "Préinscription", path: "/enrollment" }]}
+>
+  <EnrollmentPageContent client:load />
 </Layout>

@@ -36,15 +36,31 @@ const stageNumber = String(gradeIndex + 1).padStart(2, "0");
 const previousGrade = gradeProfiles[gradeIndex - 1] ?? null;
 const nextGrade = gradeProfiles[gradeIndex + 1] ?? null;
 const gradePhotos = grade.gallery.map((key) => photos[key]);
+
+/** Extraits Google (≤ 160 caractères) — reprennent la présentation de chaque section. */
+const seoDescriptions: Record<string, string> = {
+  prescolaire:
+    "Section préscolaire de l'ISAJ à Bon-Repos : premiers apprentissages et développement intellectuel, social, émotionnel et moteur des jeunes enfants.",
+  fondamental:
+    "Section fondamentale de l'ISAJ à Bon-Repos : lecture, écriture, mathématiques, sciences, langues, sciences sociales et éducation citoyenne.",
+  secondaire:
+    "Section secondaire de l'ISAJ à Bon-Repos : préparation aux examens officiels, aux études supérieures et à la formation professionnelle.",
+};
 ---
 
 <Layout
-  title={`${grade.title} — ${schoolIdentity.name} (ISAJ)`}
-  description={grade.overview}
+  title={`${grade.title} — École ISAJ, Croix-des-Bouquets`}
+  description={seoDescriptions[grade.id] ?? grade.overview}
+  keywords={[
+    grade.title.replace("Section ", "").toLowerCase(),
+    "programme scolaire Haïti",
+  ]}
+  breadcrumbs={[
+    { name: "Programme", path: "/curriculum" },
+    { name: grade.title, path: `/grade/${grade.id}` },
+  ]}
 >
-  <section
-    class="mx-auto max-w-7xl px-4 pt-12 pb-16 sm:px-6 lg:px-8 lg:pt-16"
-  >
+  <section class="mx-auto max-w-7xl px-4 pt-12 pb-16 sm:px-6 lg:px-8 lg:pt-16">
     <a
       href="/curriculum"
       class="group text-ink-mute hover:text-ink inline-flex items-center gap-2 text-[0.85rem] transition-colors"
@@ -272,7 +288,11 @@ const gradePhotos = grade.gallery.map((key) => photos[key]);
                   href={phone.href}
                   class="flex min-h-11 items-center gap-3 text-white/80 transition-colors hover:text-white"
                 >
-                  <Phone size={15} strokeWidth={1.6} className="shrink-0 text-white/40" />
+                  <Phone
+                    size={15}
+                    strokeWidth={1.6}
+                    className="shrink-0 text-white/40"
+                  />
                   {phone.display}
                 </a>
               </li>

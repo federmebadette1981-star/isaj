@@ -2,14 +2,22 @@
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import Layout from "../layouts/Layout.astro";
 import { gradeProfiles } from "../data/grade-profiles";
-import { academicResults, schoolIdentity } from "../data/site-content";
+import { academicResults } from "../data/site-content";
 
 const total = String(gradeProfiles.length).padStart(2, "0");
 ---
 
 <Layout
-  title={`Programme scolaire — ${schoolIdentity.name} (ISAJ)`}
-  description="Le programme de l'ISAJ, du préscolaire au secondaire : sections, objectifs pédagogiques, principales matières et approche pédagogique."
+  title="Programme scolaire : préscolaire au secondaire | ISAJ"
+  description="Le programme de l'ISAJ à Croix-des-Bouquets : section préscolaire, section fondamentale et section secondaire, objectifs pédagogiques et principales matières."
+  keywords={[
+    "programme scolaire Haïti",
+    "préscolaire",
+    "fondamental",
+    "secondaire",
+    "MENFP",
+  ]}
+  breadcrumbs={[{ name: "Programme", path: "/curriculum" }]}
 >
   <section
     class="mx-auto max-w-7xl px-4 pt-12 pb-20 sm:px-6 lg:px-8 lg:pt-16 lg:pb-24"
@@ -224,7 +232,8 @@ const total = String(gradeProfiles.length).padStart(2, "0");
             class="tracking-headline balance mt-4 text-[1.75rem] leading-[1.05] font-semibold sm:text-4xl md:text-[3.5rem]"
           >
             Une question sur une <span
-              class="font-display font-normal text-white/75 italic">section</span
+              class="font-display font-normal text-white/75 italic"
+              >section</span
             > ?
           </h2>
           <p class="mt-6 max-w-lg text-[0.95rem] leading-relaxed text-white/55">
