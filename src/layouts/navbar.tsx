@@ -7,6 +7,8 @@ type NavLink = {
   match: (path: string) => boolean;
   /** Mis en avant : l'appel au soutien, distinct des autres rubriques. */
   highlight?: boolean;
+  /** Site externe : ouvert dans un nouvel onglet. */
+  external?: boolean;
 };
 
 const links: NavLink[] = [
@@ -52,7 +54,16 @@ const links: NavLink[] = [
     label: "Contact",
     match: (p) => p.startsWith("/contact"),
   },
+  {
+    href: "https://campus.isajhaiti.org",
+    label: "Campus numérique",
+    match: () => false,
+    external: true,
+  },
 ];
+
+const externalProps = (l: NavLink) =>
+  l.external ? { target: "_blank", rel: "noopener noreferrer" } : {};
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -91,12 +102,13 @@ const Navbar = () => {
           </a>
 
           <div className="hidden items-center gap-0.5 xl:flex">
-            {links.map((l) => {
+            {links.filter((l) => !l.external).map((l) => {
               const active = l.match(path);
               return (
                 <a
                   key={l.href}
                   href={l.href}
+                  {...externalProps(l)}
                   className={`group relative rounded-full px-3 py-2 text-[0.88rem] font-medium transition-colors ${
                     l.highlight
                       ? "text-[var(--color-brand-deep)] hover:text-[var(--color-brand)]"
@@ -118,7 +130,19 @@ const Navbar = () => {
             })}
           </div>
 
-          <div className="hidden xl:block">
+          <div className="hidden items-center gap-2 xl:flex">
+            <a
+              href="https://campus.isajhaiti.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-black/[0.1] bg-white/70 px-5 py-2.5 text-sm font-medium text-[var(--color-ink)] backdrop-blur-md transition-all hover:bg-white active:scale-[0.97]"
+            >
+              Campus numérique
+              <ArrowUpRight
+                size={15}
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </a>
             <a
               href="/enrollment"
               className="group inline-flex items-center gap-1.5 rounded-full bg-[var(--color-ink)] px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-[var(--color-ink-soft)] active:scale-[0.97]"
@@ -159,6 +183,7 @@ const Navbar = () => {
                 <a
                   key={l.href}
                   href={l.href}
+                  {...externalProps(l)}
                   onClick={() => setIsOpen(false)}
                   className={`flex min-h-12 items-center justify-between rounded-2xl px-4 py-3 text-base font-medium transition-colors ${
                     active || l.highlight
